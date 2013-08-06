@@ -20,13 +20,13 @@ function wetkit_wetboew_page_build() {
 
   foreach ($base_theme_info as $base) {
     if (!empty($base->name)) {
-      if ($base->name == 'wetkit_adaptivetheme') {
+      if ($base->name == 'wetkit_adaptivetheme' || $base->name == 'wetkit_omega') {
         $wetkit_base_theme = TRUE;
       }
     }
   }
 
-  if (($theme == 'wetkit_adaptivetheme')  || ($wetkit_base_theme == TRUE)) {
+  if (($theme == 'wetkit_adaptivetheme') || ($theme == 'wetkit_omega') || ($wetkit_base_theme == TRUE)) {
     // Internet Theme.
     $library = libraries_detect('wet-boew', NULL, 'internet');
     if ((isset($library)) && !empty($library['variants']['internet']['installed'])) {
@@ -305,13 +305,13 @@ function wetkit_wetboew_preprocess_status_messages(&$variables) {
 
   foreach ($base_theme_info as $base) {
     if (!empty($base->name)) {
-      if ($base->name == 'wetkit_adaptivetheme') {
+      if ($base->name == 'wetkit_adaptivetheme' || $base->name == 'wetkit_omega') {
         $wetkit_base_theme = TRUE;
       }
     }
   }
 
-  if (($theme == 'wetkit_adaptivetheme')  || ($wetkit_base_theme == TRUE)) {
+  if (($theme == 'wetkit_adaptivetheme') || ($theme == 'wetkit_omega') || ($wetkit_base_theme == TRUE)) {
     $variables['theme_hook_suggestions'][] = 'wetkit_wetboew_status_messages';
   }
 }
@@ -327,13 +327,13 @@ function wetkit_wetboew_preprocess_tablefield_view(&$variables) {
 
   foreach ($base_theme_info as $base) {
     if (!empty($base->name)) {
-      if ($base->name == 'wetkit_adaptivetheme') {
+      if ($base->name == 'wetkit_adaptivetheme' || $base->name == 'wetkit_omega') {
         $wetkit_base_theme = TRUE;
       }
     }
   }
 
-  if (($theme == 'wetkit_adaptivetheme')  || ($wetkit_base_theme == TRUE)) {
+  if (($theme == 'wetkit_adaptivetheme') || ($theme == 'wetkit_omega') || ($wetkit_base_theme == TRUE)) {
     $variables['theme_hook_suggestions'][] = 'wetkit_wetboew_tablefield_view';
   }
 }
