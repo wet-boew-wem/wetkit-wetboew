@@ -239,6 +239,7 @@ function wetkit_wetboew_theme_registry_alter(&$theme_registry) {
     $theme_registry['total_control_admin_table']['theme path'] = drupal_get_path('module', 'wetkit_wetboew');
     $theme_registry['total_control_admin_table']['file'] = drupal_get_path('module', 'wetkit_wetboew') . '/theme/wetkit_wetboew.theme.inc';
     $theme_registry['total_control_admin_table']['function'] = 'theme_wetkit_wetboew_admin_table';
+    $theme_registry['total_control_admin_table']['final'] = TRUE;
   }
 }
 
