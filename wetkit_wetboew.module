@@ -154,12 +154,12 @@ function wetkit_wetboew_configure_form($form, &$form_state) {
   );
   $form['wetkit_wetboew']['wetkit_wetboew_theme'] = array(
     '#type' => 'select',
-    '#title' => t('Please choose the appropriate WET theme.'),
+    '#title' => t('Please choose the appropriate WxT theme.'),
     '#options' => array(
-      0 => t('WET Theme'),
-      1 => t('Internet'),
-      2 => t('Intranet'),
-      3 => t('Base Theme'),
+      0 => t('WxT Theme'),
+      1 => t('WxT Internet'),
+      2 => t('WxT Intranet'),
+      3 => t('WxT Base Theme'),
     ),
     '#default_value' => variable_get('wetkit_wetboew_theme', 0),
     '#description' => t('This will change the Drupal theme by adding custom css and logic for various WET based themes'),

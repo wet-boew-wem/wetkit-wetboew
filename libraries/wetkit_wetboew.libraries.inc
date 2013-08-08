@@ -23,7 +23,7 @@ function wetkit_wetboew_libraries_info() {
           ),
           'group' => CSS_DEFAULT,
           'every_page' => TRUE,
-          'preprocess' => FALSE,
+          'preprocess' => TRUE,
           'weight' => 5,
         ),
         'dist/js/css/pe-ap-ie-min.css' => array(
@@ -33,7 +33,7 @@ function wetkit_wetboew_libraries_info() {
           ),
           'group' => CSS_DEFAULT,
           'every_page' => TRUE,
-          'preprocess' => FALSE,
+          'preprocess' => TRUE,
           'weight' => 5,
         ),
         'dist/theme-wet-boew/css/theme-ie-min.css' => array(
@@ -43,7 +43,7 @@ function wetkit_wetboew_libraries_info() {
           ),
           'group' => CSS_DEFAULT,
           'every_page' => TRUE,
-          'preprocess' => FALSE,
+          'preprocess' => TRUE,
           'weight' => 5,
         ),
         'dist/grids/css/util-min.css' => array(
@@ -51,7 +51,7 @@ function wetkit_wetboew_libraries_info() {
             'IE' => 'gt IE 8',
             '!IE' => TRUE,
           ),
-          'preprocess' => FALSE,
+          'preprocess' => TRUE,
           'weight' => 5,
         ),
         'dist/js/css/pe-ap-min.css' => array(
@@ -59,7 +59,7 @@ function wetkit_wetboew_libraries_info() {
             'IE' => 'gt IE 8',
             '!IE' => TRUE,
           ),
-          'preprocess' => FALSE,
+          'preprocess' => TRUE,
           'weight' => 5,
         ),
         'dist/theme-wet-boew/css/theme-min.css' => array(
@@ -67,7 +67,7 @@ function wetkit_wetboew_libraries_info() {
             'IE' => 'gt IE 8',
             '!IE' => TRUE,
           ),
-          'preprocess' => FALSE,
+          'preprocess' => TRUE,
           'weight' => 5,
         ),
       ),
@@ -87,11 +87,6 @@ function wetkit_wetboew_libraries_info() {
           'scope' => 'footer',
           'weight' => 5,
         ),
-        //'dist/js/jquerymobile/jquery.mobile.min.js' => array(
-        //  'preprocess' => FALSE,
-        //  'scope' => 'footer',
-        //  'weight' => 5,
-        //),
       ),
     ),
     // VARIANTS
@@ -107,7 +102,7 @@ function wetkit_wetboew_libraries_info() {
               ),
               'group' => CSS_DEFAULT,
               'every_page' => TRUE,
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/grids/css/util-min.css' => array(
@@ -115,7 +110,7 @@ function wetkit_wetboew_libraries_info() {
                 'IE' => 'gt IE 8',
                 '!IE' => TRUE,
               ),
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/js/css/pe-ap-ie-min.css' => array(
@@ -125,7 +120,7 @@ function wetkit_wetboew_libraries_info() {
               ),
               'group' => CSS_DEFAULT,
               'every_page' => TRUE,
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/js/css/pe-ap-min.css' => array(
@@ -133,7 +128,7 @@ function wetkit_wetboew_libraries_info() {
                 'IE' => 'gt IE 8',
                 '!IE' => TRUE,
               ),
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/theme-gcwu-fegc/css/theme-ie-min.css' => array(
@@ -143,7 +138,7 @@ function wetkit_wetboew_libraries_info() {
               ),
               'group' => CSS_DEFAULT,
               'every_page' => TRUE,
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/theme-gcwu-fegc/css/theme-min.css' => array(
@@ -151,7 +146,7 @@ function wetkit_wetboew_libraries_info() {
                 'IE' => 'gt IE 8',
                 '!IE' => TRUE,
               ),
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
           ),
@@ -171,11 +166,6 @@ function wetkit_wetboew_libraries_info() {
               'scope' => 'footer',
               'weight' => 5,
             ),
-            //'dist/js/jquerymobile/jquery.mobile.min.js' => array(
-            //  'preprocess' => FALSE,
-            //  'scope' => 'footer',
-            //  'weight' => 5,
-            //),
           ),
         ),
         'variant callback' => 'wetkit_wetboew_check_variant',
@@ -194,7 +184,7 @@ function wetkit_wetboew_libraries_info() {
               ),
               'group' => CSS_DEFAULT,
               'every_page' => TRUE,
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/grids/css/util-min.css' => array(
@@ -202,7 +192,7 @@ function wetkit_wetboew_libraries_info() {
                 'IE' => 'gt IE 8',
                 '!IE' => TRUE,
               ),
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/js/css/pe-ap-ie-min.css' => array(
@@ -212,7 +202,7 @@ function wetkit_wetboew_libraries_info() {
               ),
               'group' => CSS_DEFAULT,
               'every_page' => TRUE,
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/js/css/pe-ap-min.css' => array(
@@ -220,7 +210,7 @@ function wetkit_wetboew_libraries_info() {
                 'IE' => 'gt IE 8',
                 '!IE' => TRUE,
               ),
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/theme-gcwu-intranet/css/theme-ie-min.css' => array(
@@ -230,7 +220,7 @@ function wetkit_wetboew_libraries_info() {
               ),
               'group' => CSS_DEFAULT,
               'every_page' => TRUE,
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/theme-gcwu-intranet/css/theme-min.css' => array(
@@ -238,7 +228,7 @@ function wetkit_wetboew_libraries_info() {
                 'IE' => 'gt IE 8',
                 '!IE' => TRUE,
               ),
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
           ),
@@ -258,11 +248,6 @@ function wetkit_wetboew_libraries_info() {
               'scope' => 'footer',
               'weight' => 5,
             ),
-            //'dist/js/jquerymobile/jquery.mobile.min.js' => array(
-            //  'preprocess' => FALSE,
-            //  'scope' => 'footer',
-            //  'weight' => 5,
-            //),
           ),
         ),
         'variant callback' => 'wetkit_wetboew_check_variant',
@@ -281,7 +266,7 @@ function wetkit_wetboew_libraries_info() {
               ),
               'group' => CSS_DEFAULT,
               'every_page' => TRUE,
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/js/css/pe-ap-ie-min.css' => array(
@@ -291,7 +276,7 @@ function wetkit_wetboew_libraries_info() {
               ),
               'group' => CSS_DEFAULT,
               'every_page' => TRUE,
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/theme-base/css/theme-ie-min.css' => array(
@@ -301,7 +286,7 @@ function wetkit_wetboew_libraries_info() {
               ),
               'group' => CSS_DEFAULT,
               'every_page' => TRUE,
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/grids/css/util-min.css' => array(
@@ -309,7 +294,7 @@ function wetkit_wetboew_libraries_info() {
                 'IE' => 'gt IE 8',
                 '!IE' => TRUE,
               ),
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/js/css/pe-ap-min.css' => array(
@@ -317,7 +302,7 @@ function wetkit_wetboew_libraries_info() {
                 'IE' => 'gt IE 8',
                 '!IE' => TRUE,
               ),
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
             'dist/theme-base/css/theme-min.css' => array(
@@ -325,7 +310,7 @@ function wetkit_wetboew_libraries_info() {
                 'IE' => 'gt IE 8',
                 '!IE' => TRUE,
               ),
-              'preprocess' => FALSE,
+              'preprocess' => TRUE,
               'weight' => 5,
             ),
           ),
@@ -345,11 +330,6 @@ function wetkit_wetboew_libraries_info() {
               'scope' => 'footer',
               'weight' => 5,
             ),
-            //'dist/js/jquerymobile/jquery.mobile.min.js' => array(
-            //  'preprocess' => FALSE,
-            //  'scope' => 'footer',
-            //  'weight' => 5,
-            //),
           ),
         ),
         'variant callback' => 'wetkit_wetboew_check_variant',
