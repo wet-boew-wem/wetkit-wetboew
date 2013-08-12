@@ -6,7 +6,6 @@
 
 include_once 'libraries/wetkit_wetboew.libraries.inc';
 include_once 'theme/wetkit_wetboew.theme.inc';
-include_once 'wetkit_wetboew.menus.inc';
 
 /**
  * Implements hook_page_build().
