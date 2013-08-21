@@ -164,19 +164,9 @@ function wetkit_wetboew_configure_form($form, &$form_state) {
     '#description' => t('This will change the theme by adding custom css and logic to support the various Drupal WEM based themes.'),
   );
 
+  $form['#submit'][] = 'wetkit_wetboew_configure_form_submit';
+
   return system_settings_form($form);
-}
-
-/**
- * Handle submission of the WetKit Web Usability configuration page.
- *
- * @param array $form
- *   Nested array of form elements that comprise the form.
- * @param array $form_state
- *   A keyed array containing the current state of the form.
- */
-function wetkit_wetboew_menus_submit($form, &$form_state) {
-
 }
 
 /**
