@@ -148,12 +148,12 @@ function wetkit_wetboew_configure_form($form, &$form_state) {
   $form = array();
   $form['wetkit_wetboew'] = array(
     '#type' => 'fieldset',
-    '#title' => t('WetKit Theme Selection'),
+    '#title' => t('WxT Theme Selection'),
     '#collapsible' => TRUE,
   );
   $form['wetkit_wetboew']['wetkit_wetboew_theme'] = array(
     '#type' => 'select',
-    '#title' => t('Please choose the appropriate WxT theme.'),
+    '#title' => t('Please choose the desired theme:'),
     '#options' => array(
       0 => t('WxT Theme'),
       1 => t('WxT Internet'),
@@ -161,18 +161,8 @@ function wetkit_wetboew_configure_form($form, &$form_state) {
       3 => t('WxT Base Theme'),
     ),
     '#default_value' => variable_get('wetkit_wetboew_theme', 0),
-    '#description' => t('This will change the Drupal theme by adding custom css and logic for various WET based themes'),
+    '#description' => t('This will change the theme by adding custom css and logic to support the various Drupal WEM based themes.'),
   );
-  $form['wetkit_wetboew']['wetkit_wetboew_menus_description'] = array(
-    '#markup' => '<p>' . t('Rebuild the Menus on the site using demo content.') . '</p>',
-  );
-  $form['wetkit_wetboew']['wetkit_wetboew_menus'] = array(
-    '#type' => 'submit',
-    '#value' => t('Rebuild Default Menu(s)'),
-    '#weight' => 19,
-    '#submit' => array('wetkit_wetboew_menus_submit'),
-  );
-  $form['#submit'][] = 'wetkit_wetboew_configure_form_submit';
 
   return system_settings_form($form);
 }
@@ -186,12 +176,7 @@ function wetkit_wetboew_configure_form($form, &$form_state) {
  *   A keyed array containing the current state of the form.
  */
 function wetkit_wetboew_menus_submit($form, &$form_state) {
-  if ($form_state['values']['op'] == t('Rebuild Default Menu(s)')) {
-    if (module_exists('wetkit_wetboew')) {
-      menu_delete_links('main-menu');
-      _wetkit_wetboew_menu_megamenu_load();
-    }
-  }
+
 }
 
 /**
