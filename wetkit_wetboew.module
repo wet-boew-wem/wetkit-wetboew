@@ -87,39 +87,6 @@ function wetkit_wetboew_page_build() {
 }
 
 /**
- * Implements hook_menu().
- */
-function wetkit_wetboew_menu() {
-  // Add settings pages for WetKit WETBOEW.
-  foreach (module_list() as $module) {
-    $app_info = module_invoke($module, 'apps_app_info');
-    if (!empty($app_info) && !empty($app_info['configure form'])) {
-      $module_info = drupal_parse_info_file(drupal_get_path('module', $module) . '/' . $module . '.info');
-      if (!empty($module_info['package']) && $module_info['package'] == 'WetKit') {
-        $items['admin/panopoly/wetkit_settings/' . $module] = array(
-          'title' => $module_info['name'],
-          'description' => 'This is the configuration screen for ' . $module_info['name'],
-          'page callback' => 'drupal_get_form',
-          'page arguments' => array($app_info['configure form']),
-          'access arguments' => array('administer site configuration'),
-        );
-      }
-      elseif (!empty($module_info['package']) && $module_info['package'] == 'WetKit Apps') {
-        $items['admin/panopoly/wetkit_app_settings/' . $module] = array(
-          'title' => $module_info['name'],
-          'description' => 'This is the configuration screen for ' . $module_info['name'],
-          'page callback' => 'drupal_get_form',
-          'page arguments' => array($app_info['configure form']),
-          'access arguments' => array('administer site configuration'),
-        );
-      }
-    }
-  }
-
-  return $items;
-}
-
-/**
  * Implements hook_ctools_plugin_directory().
  */
 function wetkit_wetboew_ctools_plugin_directory($module, $plugin) {
@@ -224,12 +191,6 @@ function wetkit_wetboew_css_alter(&$css) {
   // Installs the jquery.ui themeroller theme to the theme.
   if (isset($css['misc/ui/jquery.ui.theme.css']) && (user_is_logged_in())) {
     $url = parse_url(request_uri());
-    if (strstr($url['path'], "/media/browser")) {
-      $css['misc/ui/jquery.ui.theme.css']['data'] = drupal_get_path('module', 'panopoly_core') . '/css/panopooly-jquery-ui-theme.css';
-    }
-    else {
-      $css['misc/ui/jquery.ui.theme.css']['data'] = drupal_get_path('module', 'panopoly_core') . '/css/panopooly-jquery-ui-theme.css';
-    }
   }
   else {
     unset($css['misc/ui/jquery.ui.theme.css']);
