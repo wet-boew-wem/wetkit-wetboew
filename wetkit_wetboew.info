@@ -1,4 +1,4 @@
-name = WetKit WET-BOEW
+name = WetKit Library
 description = Installs and configures settings related to the WET-BOEW JS Library
 core = 7.x
 package = WetKit
