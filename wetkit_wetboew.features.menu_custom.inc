@@ -16,7 +16,7 @@ function wetkit_wetboew_menu_default_menu_custom() {
     'title' => 'Mega Menu',
     'description' => 'The <em>Main</em> megamenu for Web Experience Toolkit',
     'language' => 'und',
-    'i18n_mode' => '5',
+    'i18n_mode' => 5,
   );
   // Exported menu: menu-wet-footer.
   $menus['menu-wet-footer'] = array(
@@ -24,7 +24,7 @@ function wetkit_wetboew_menu_default_menu_custom() {
     'title' => 'Footer',
     'description' => 'Footer Section for Web Experience Toolkit',
     'language' => 'und',
-    'i18n_mode' => '5',
+    'i18n_mode' => 5,
   );
   // Exported menu: menu-wet-header.
   $menus['menu-wet-header'] = array(
@@ -32,7 +32,7 @@ function wetkit_wetboew_menu_default_menu_custom() {
     'title' => 'Header',
     'description' => 'Header Section for Web Experience Toolkit',
     'language' => 'und',
-    'i18n_mode' => '5',
+    'i18n_mode' => 5,
   );
   // Exported menu: menu-wet-mid-footer.
   $menus['menu-wet-mid-footer'] = array(
@@ -40,7 +40,7 @@ function wetkit_wetboew_menu_default_menu_custom() {
     'title' => 'Mid Footer',
     'description' => 'Mid Footer Section for Web Experience Toolkit',
     'language' => 'und',
-    'i18n_mode' => '5',
+    'i18n_mode' => 5,
   );
   // Exported menu: menu-wet-terms.
   $menus['menu-wet-terms'] = array(
@@ -48,7 +48,7 @@ function wetkit_wetboew_menu_default_menu_custom() {
     'title' => 'Terms',
     'description' => 'Terms Section for Web Experience Toolkit',
     'language' => 'und',
-    'i18n_mode' => '5',
+    'i18n_mode' => 5,
   );
   // Translatables
   // Included for use with string extractors like potx.
@@ -62,6 +62,7 @@ function wetkit_wetboew_menu_default_menu_custom() {
   t('Terms');
   t('Terms Section for Web Experience Toolkit');
   t('The <em>Main</em> megamenu for Web Experience Toolkit');
+
 
   return $menus;
 }
