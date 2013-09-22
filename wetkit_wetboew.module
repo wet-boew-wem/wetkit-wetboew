@@ -59,20 +59,13 @@ function wetkit_wetboew_page_build() {
     'every_page' => TRUE,
   ));
 
-  // Add the jQuery Mobile Library WET Needs.
-  // Don't add it for content administrators + super admin as will break certain WYSWYIG Buttons
-  // TODO
-  global $user;
-  if ($user->uid != 1) {
-    $has_role = array_intersect(array('anonymous user', 'authenticated user', 'unverified user'), array_values($user->roles));
-    if (empty($has_role) || count($user->roles) != 1 ? FALSE : TRUE) {
-      drupal_add_js(libraries_get_path('wet-boew') . '/dist/js/jquerymobile/jquery.mobile.min.js', array(
-          'preprocess' => FALSE,
-          'scope' => 'footer',
-          'weight' => 5,
-        )
-      );
-    }
+  // Add the jQuery Mobile Library WET needs.
+  if (!user_is_logged_in()) {
+    drupal_add_js(libraries_get_path('wet-boew') . '/dist/js/jquerymobile/jquery.mobile.min.js', array(
+      'preprocess' => FALSE,
+      'scope' => 'footer',
+      'weight' => 5,
+    ));
   }
 
   // Add the noscipt css that WET expects.
@@ -188,14 +181,7 @@ function wetkit_wetboew_theme_registry_alter(&$theme_registry) {
  * Implements hook_css_alter().
  */
 function wetkit_wetboew_css_alter(&$css) {
-  // Installs the jquery.ui themeroller theme to the theme.
-  if (isset($css['misc/ui/jquery.ui.theme.css']) && (user_is_logged_in())) {
-    $url = parse_url(request_uri());
-  }
-  else {
-    unset($css['misc/ui/jquery.ui.theme.css']);
-  }
-
+  // Unsets some non essential jquery ui effects.
   if (isset($css['misc/ui/jquery.ui.dialog.css'])) {
     unset($css['misc/ui/jquery.ui.dialog.css']);
   }
@@ -204,7 +190,6 @@ function wetkit_wetboew_css_alter(&$css) {
     unset($css['misc/ui/jquery.ui.tabs.css']);
   }
 }
-
 
 /**
  * Implements hook_theme().
@@ -237,7 +222,6 @@ function wetkit_wetboew_preprocess_status_messages(&$variables) {
   global $theme;
   global $base_theme_info;
   $wetkit_base_theme = FALSE;
-  $themekey = 'theme-gcwu-fegc';
 
   foreach ($base_theme_info as $base) {
     if (!empty($base->name)) {
@@ -259,7 +243,6 @@ function wetkit_wetboew_preprocess_tablefield_view(&$variables) {
   global $theme;
   global $base_theme_info;
   $wetkit_base_theme = FALSE;
-  $themekey = 'theme-gcwu-fegc';
 
   foreach ($base_theme_info as $base) {
     if (!empty($base->name)) {

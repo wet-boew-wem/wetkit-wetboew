@@ -19,7 +19,6 @@ function theme_wetkit_configure_panes_render_pane($vars) {
   $content = $vars['content'];
   $pane = $vars['pane'];
   $display = $vars['display'];
-  $plugin = $vars['style'];
   $settings = $vars['settings'];
 
   $class_stack = array();

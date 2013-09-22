@@ -13,7 +13,7 @@ function wetkit_wetboew_libraries_info() {
     'vendor url' => 'https://github.com/wet-boew/wet-boew',
     'download url' => 'https://github.com/wet-boew/wet-boew/downloads',
     'version' => '3.1',
-    // WETBOEW THEME
+    // WETBOEW THEME.
     'files' => array(
       'css' => array(
         'dist/grids/css/util-ie-min.css' => array(
@@ -89,9 +89,9 @@ function wetkit_wetboew_libraries_info() {
         ),
       ),
     ),
-    // VARIANTS
+    // VARIANTS.
     'variants' => array(
-      // INTERNET THEME
+      // INTERNET THEME.
       'internet' => array(
         'files' => array(
           'css' => array(
@@ -173,7 +173,7 @@ function wetkit_wetboew_libraries_info() {
           'variant' => 'internet',
         ),
       ),
-      // INTRANET THEME
+      // INTRANET THEME.
       'intranet' => array(
         'files' => array(
           'css' => array(
@@ -255,7 +255,7 @@ function wetkit_wetboew_libraries_info() {
           'variant' => 'intranet',
         ),
       ),
-      // BASE THEME
+      // BASE THEME.
       'base' => array(
         'files' => array(
           'css' => array(
