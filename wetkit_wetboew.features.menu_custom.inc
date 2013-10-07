@@ -14,7 +14,7 @@ function wetkit_wetboew_menu_default_menu_custom() {
   $menus['main-menu'] = array(
     'menu_name' => 'main-menu',
     'title' => 'Mega Menu',
-    'description' => 'The <em>Main</em> megamenu for Web Experience Toolkit',
+    'description' => 'The <em>Main</em> megamenu.',
     'language' => 'und',
     'i18n_mode' => 5,
   );
@@ -22,7 +22,7 @@ function wetkit_wetboew_menu_default_menu_custom() {
   $menus['menu-wet-footer'] = array(
     'menu_name' => 'menu-wet-footer',
     'title' => 'Footer',
-    'description' => 'Footer Section for Web Experience Toolkit',
+    'description' => 'Footer Menu.',
     'language' => 'und',
     'i18n_mode' => 5,
   );
@@ -30,7 +30,7 @@ function wetkit_wetboew_menu_default_menu_custom() {
   $menus['menu-wet-header'] = array(
     'menu_name' => 'menu-wet-header',
     'title' => 'Header',
-    'description' => 'Header Section for Web Experience Toolkit',
+    'description' => 'Header Menu.',
     'language' => 'und',
     'i18n_mode' => 5,
   );
@@ -38,7 +38,7 @@ function wetkit_wetboew_menu_default_menu_custom() {
   $menus['menu-wet-mid-footer'] = array(
     'menu_name' => 'menu-wet-mid-footer',
     'title' => 'Mid Footer',
-    'description' => 'Mid Footer Section for Web Experience Toolkit',
+    'description' => 'Mid Footer Menu.',
     'language' => 'und',
     'i18n_mode' => 5,
   );
@@ -46,22 +46,22 @@ function wetkit_wetboew_menu_default_menu_custom() {
   $menus['menu-wet-terms'] = array(
     'menu_name' => 'menu-wet-terms',
     'title' => 'Terms',
-    'description' => 'Terms Section for Web Experience Toolkit',
+    'description' => 'Terms Menu.',
     'language' => 'und',
     'i18n_mode' => 5,
   );
   // Translatables
   // Included for use with string extractors like potx.
   t('Footer');
-  t('Footer Section for Web Experience Toolkit');
+  t('Footer Menu.');
   t('Header');
-  t('Header Section for Web Experience Toolkit');
+  t('Header Menu.');
   t('Mega Menu');
   t('Mid Footer');
-  t('Mid Footer Section for Web Experience Toolkit');
+  t('Mid Footer Menu.');
   t('Terms');
-  t('Terms Section for Web Experience Toolkit');
-  t('The <em>Main</em> megamenu for Web Experience Toolkit');
+  t('Terms Menu.');
+  t('The <em>Main</em> megamenu.');
 
 
   return $menus;
