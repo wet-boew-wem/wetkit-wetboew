@@ -334,7 +334,88 @@ function wetkit_wetboew_libraries_info() {
         ),
         'variant callback' => 'wetkit_wetboew_check_variant',
         'variant arguments' => array(
-          'variant' => 'base-theme',
+          'variant' => 'base',
+        ),
+      ),
+      'ogpl' => array(
+        'files' => array(
+          'css' => array(
+            'dist/grids/css/util-ie-min.css' => array(
+              'browsers' => array(
+                'IE' => 'lte IE 8',
+                '!IE' => FALSE,
+              ),
+              'group' => CSS_DEFAULT,
+              'every_page' => TRUE,
+              'preprocess' => FALSE,
+              'weight' => 5,
+            ),
+            'dist/grids/css/util-min.css' => array(
+              'browsers' => array(
+                'IE' => 'gt IE 8',
+                '!IE' => TRUE,
+              ),
+              'preprocess' => FALSE,
+              'weight' => 5,
+            ),
+            'dist/js/css/pe-ap-ie-min.css' => array(
+              'browsers' => array(
+                'IE' => 'lte IE 8',
+                '!IE' => FALSE,
+              ),
+              'group' => CSS_DEFAULT,
+              'every_page' => TRUE,
+              'preprocess' => FALSE,
+              'weight' => 5,
+            ),
+            'dist/js/css/pe-ap-min.css' => array(
+              'browsers' => array(
+                'IE' => 'gt IE 8',
+                '!IE' => TRUE,
+              ),
+              'preprocess' => FALSE,
+              'weight' => 5,
+            ),
+            'dist/theme-ogpl/css/theme-ie-min.css' => array(
+              'browsers' => array(
+                'IE' => 'lte IE 8',
+                '!IE' => FALSE,
+              ),
+              'group' => CSS_DEFAULT,
+              'every_page' => TRUE,
+              'preprocess' => FALSE,
+              'weight' => 5,
+            ),
+            'dist/theme-ogpl/css/theme-min.css' => array(
+              'browsers' => array(
+                'IE' => 'gt IE 8',
+                '!IE' => TRUE,
+              ),
+              'preprocess' => FALSE,
+              'weight' => 5,
+            ),
+          ),
+          'js' => array(
+            'dist/js/settings.js' => array(
+              'preprocess' => FALSE,
+              'scope' => 'footer',
+              'weight' => 5,
+            ),
+            'dist/theme-ogpl/js/theme-min.js' => array(
+              'preprocess' => FALSE,
+              'scope' => 'footer',
+              'weight' => 5,
+            ),
+            'dist/js/pe-ap-min.js' => array(
+              'preprocess' => FALSE,
+              'scope' => 'footer',
+              'weight' => 5,
+            ),
+          ),
+        ),
+        'variant callback' => 'wetkit_wetboew_check_variant',
+        'variant arguments' => array(
+          'variant' => 'ogpl',
         ),
       ),
     ),
@@ -361,6 +442,9 @@ function wetkit_wetboew_check_variant($libary, $variant) {
     return TRUE;
   }
   elseif ((variable_get('wetkit_wetboew_theme', 0) == 3) && ($variant == 'base')) {
+    return TRUE;
+  }
+  elseif ((variable_get('wetkit_wetboew_theme', 0) == 4) && ($variant == 'ogpl')) {
     return TRUE;
   }
   else {
