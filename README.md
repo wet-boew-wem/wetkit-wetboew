@@ -1,5 +1,5 @@
-WET-BOEW
-========
+WxT WET-BOEW
+============
 Foundational Module for most of the functionality related to the [WxT jQuery Framework][wxt].
 
 Key Features
