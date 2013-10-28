@@ -17,4 +17,4 @@ Key Features
 [libraries]:            http://www.drupal.org/project/libraries
 [menu_block]:           http://www.drupal.org/project/file_entity
 [panels]:               http://www.drupal.org/project/panels
-[wxt]:                  http://www.drupal.org/project/wetkit
+[wxt]:                  http://github.com/wet-boew/wet-boew
