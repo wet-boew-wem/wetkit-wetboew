@@ -30,6 +30,5 @@ function wetkit_wetboew_defaultconfig_user_default_permissions() {
     'module' => 'wetkit_wetboew',
   );
 
-
   return $permissions;
 }
