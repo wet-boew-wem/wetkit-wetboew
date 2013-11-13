@@ -8,6 +8,18 @@ include_once 'libraries/wetkit_wetboew.libraries.inc';
 include_once 'theme/wetkit_wetboew.theme.inc';
 
 /**
+ * Implements hook_permission().
+ */
+function wetkit_wetboew_permission() {
+  return array(
+    'access wxt mobile' => array(
+      'title' => t('Access WxT jQuery Mobile Framework'),
+      'description' => t('Whether the WxT jQuery Mobile Framework should be added to the js footer for a role.'),
+    ),
+  );
+}
+
+/**
  * Implements hook_page_build().
  */
 function wetkit_wetboew_page_build() {
@@ -65,7 +77,8 @@ function wetkit_wetboew_page_build() {
   ));
 
   // Add the jQuery Mobile Library WET needs.
-  if (!user_is_logged_in()) {
+  global $user;
+  if (user_access('access wxt mobile') && $user->uid != 1) {
     drupal_add_js(libraries_get_path('wet-boew') . '/dist/js/jquerymobile/jquery.mobile.min.js', array(
       'preprocess' => FALSE,
       'scope' => 'footer',
