@@ -184,20 +184,6 @@ function wetkit_wetboew_theme_registry_alter(&$theme_registry) {
 }
 
 /**
- * Implements hook_css_alter().
- */
-function wetkit_wetboew_css_alter(&$css) {
-  // Unsets some non essential jquery ui effects.
-  if (isset($css['misc/ui/jquery.ui.dialog.css'])) {
-    unset($css['misc/ui/jquery.ui.dialog.css']);
-  }
-
-  if (isset($css['misc/ui/jquery.ui.tabs.css'])) {
-    unset($css['misc/ui/jquery.ui.tabs.css']);
-  }
-}
-
-/**
  * Implements hook_theme().
  */
 function wetkit_wetboew_theme($existing, $type, $theme, $path) {
