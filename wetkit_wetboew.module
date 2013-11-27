@@ -12,9 +12,9 @@ include_once 'theme/wetkit_wetboew.theme.inc';
  */
 function wetkit_wetboew_permission() {
   return array(
-    'access wxt mobile' => array(
-      'title' => t('Access WxT jQuery Mobile Framework'),
-      'description' => t('Whether the WxT jQuery Mobile Framework should be added to the js footer for a role.'),
+    'prevent wxt mobile' => array(
+      'title' => t('Prevent WxT jQuery Mobile from loading'),
+      'description' => t('Removes the WxT jQuery Mobile javacript from the footer for a specified role.'),
     ),
   );
 }
@@ -78,7 +78,7 @@ function wetkit_wetboew_page_build() {
 
   // Add the jQuery Mobile Library WET needs.
   global $user;
-  if (user_access('access wxt mobile') && $user->uid != 1) {
+  if (!user_access('prevent wxt mobile') && $user->uid != 1) {
     drupal_add_js(libraries_get_path('wet-boew') . '/dist/js/jquerymobile/jquery.mobile.min.js', array(
       'preprocess' => FALSE,
       'scope' => 'footer',

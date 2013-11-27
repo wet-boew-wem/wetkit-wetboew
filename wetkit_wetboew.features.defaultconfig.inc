@@ -21,11 +21,11 @@ function wetkit_wetboew_defaultconfig_features() {
 function wetkit_wetboew_defaultconfig_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: 'access wxt mobile'.
-  $permissions['access wxt mobile'] = array(
-    'name' => 'access wxt mobile',
+  // Exported permission: 'prevent wxt mobile'.
+  $permissions['prevent wxt mobile'] = array(
+    'name' => 'prevent wxt mobile',
     'roles' => array(
-      'anonymous user' => 'anonymous user',
+      'administrator' => 'administrator',
     ),
     'module' => 'wetkit_wetboew',
   );
