@@ -78,12 +78,18 @@ function wetkit_wetboew_page_build() {
 
   // Add the jQuery Mobile Library WET needs.
   global $user;
-  if (!user_access('prevent wxt mobile') && $user->uid != 1) {
-    drupal_add_js(libraries_get_path('wet-boew') . '/dist/js/jquerymobile/jquery.mobile.min.js', array(
-      'preprocess' => FALSE,
-      'scope' => 'footer',
-      'weight' => 5,
-    ));
+  $admin_theme = variable_get('admin_theme');
+
+  // The admin theme should never leverage JQMobile
+  if ($theme != $admin_theme) {
+    // Only load JQMobile for users without 'prevent wxt mobile' and Superuser.
+    if (!user_access('prevent wxt mobile') && $user->uid != 1) {
+      drupal_add_js(libraries_get_path('wet-boew') . '/dist/js/jquerymobile/jquery.mobile.min.js', array(
+        'preprocess' => FALSE,
+        'scope' => 'footer',
+        'weight' => 5,
+      ));
+    }
   }
 
   // Add the noscipt css that WET expects.
