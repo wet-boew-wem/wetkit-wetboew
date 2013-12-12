@@ -55,6 +55,7 @@ function wetkit_configure_panes_style_settings_form($style_settings) {
     '#type' => 'select',
     '#title' => t('Configure Pane Styles'),
     '#options' => array(
+      '' => t('None'),
       'width-100' => t('Width 100'),
       'width-90' => t('Width 90'),
       'width-80' => t('Width 80'),
@@ -73,6 +74,7 @@ function wetkit_configure_panes_style_settings_form($style_settings) {
     '#type' => 'select',
     '#title' => t('Configure Pane Backgrounds'),
     '#options' => array(
+      '' => t('None'),
       'background-white' => t('Background White'),
       'background-light' => t('Background Light'),
       'background-medium' => t('Background Medium'),
@@ -87,6 +89,7 @@ function wetkit_configure_panes_style_settings_form($style_settings) {
     '#type' => 'select',
     '#title' => t('Configure Pane Modules'),
     '#options' => array(
+      '' => t('None'),
       'module' => t('Module'),
       'module-alert' => t('Module Alert'),
       'module-attention' => t('Module Attention'),
@@ -116,6 +119,7 @@ function wetkit_configure_panes_style_settings_form($style_settings) {
     '#type' => 'select',
     '#title' => t('Configure Pane Opacity'),
     '#options' => array(
+      '' => t('None'),
       'opacity-100' => t('100% opacity'),
       'opacity-90' => t('90% opacity'),
       'opacity-80' => t('80% opacity'),
