@@ -85,6 +85,22 @@ function wetkit_configure_panes_style_settings_form($style_settings) {
     '#default_value' => (isset($style_settings['configure_pane_backgrounds'])) ? $style_settings['configure_pane_backgrounds'] : '',
   );
 
+  $form['configure_pane_title_backgrounds'] = array(
+    '#type' => 'select',
+    '#title' => t('Configure Pane Title Backgrounds'),
+    '#description' => t('Useful with some modules like <em>module</em> and <em>module-menu-section</em>'),
+    '#options' => array(
+      '' => t('None'),
+      'background-white' => t('Background White'),
+      'background-light' => t('Background Light'),
+      'background-medium' => t('Background Medium'),
+      'background-dark' => t('Background Dark'),
+      'background-accent' => t('Background Accent'),
+      'background-highlight' => t('Background Highlight'),
+    ),
+    '#default_value' => (isset($style_settings['configure_pane_title_backgrounds'])) ? $style_settings['configure_pane_title_backgrounds'] : '',
+  );
+
   $form['configure_pane_modules'] = array(
     '#type' => 'select',
     '#title' => t('Configure Pane Modules'),
