@@ -94,7 +94,7 @@ function wetkit_wetboew_icon_bundles() {
     'settings' => array(
       'tag' => 'span',
     ),
-    'icons' => _bootstrap_glyphicons(),
+    'icons' => _wetkit_wetboew_theme_exists('bootstrap') ? _bootstrap_glyphicons() : array(),
   );
   return $bundles;
 }
@@ -106,6 +106,9 @@ function wetkit_wetboew_ctools_plugin_directory($module, $plugin) {
   return 'plugins/' . $plugin;
 }
 
+/**
+ * Implements hook_admin_paths().
+ */
 function wetkit_wetboew_admin_paths() {
   $paths = array(
     'admin/dashboard' => FALSE,
@@ -196,10 +199,6 @@ function wetkit_wetboew_theme($existing, $type, $theme, $path) {
       'render element' => 'element',
       'file' => 'theme/wetkit_wetboew.theme.inc',
     ),
-    //'wetkit_wetboew_status_messages' => array(
-    //  'render element' => 'element',
-    //  'file' => 'theme/wetkit_wetboew.theme.inc',
-    //),
     'wetkit_wetboew_tablefield_view' => array(
       'file' => 'theme/wetkit_wetboew.theme.inc',
       'variables' => array(
@@ -209,27 +208,6 @@ function wetkit_wetboew_theme($existing, $type, $theme, $path) {
       ),
     ),
   );
-}
-
-/**
- * Implements hook_preprocess_status_messages().
- */
-function wetkit_wetboew_preprocess_status_messages(&$variables) {
-  global $theme;
-  global $base_theme_info;
-  $wetkit_base_theme = FALSE;
-
-  foreach ($base_theme_info as $base) {
-    if (!empty($base->name)) {
-      if ($base->name == 'wetkit_bootstrap') {
-        $wetkit_base_theme = TRUE;
-      }
-    }
-  }
-
-  //if (($theme == 'wetkit_bootstrap') || ($wetkit_base_theme == TRUE)) {
-  //  $variables['theme_hook_suggestions'][] = 'wetkit_wetboew_status_messages';
-  //}
 }
 
 /**
@@ -265,4 +243,13 @@ function _wetkit_wetboew_options() {
     'wet-boew-ogpl' => t('OGPL'),
     'wet-boew-gcweb' => t('Canada'),
   );
+}
+
+
+/**
+ * Implements custom function to detect if theme is enabled.
+ */
+function _wetkit_wetboew_theme_exists($theme_name) {
+  $themes = list_themes();
+  return isset($themes[$theme_name]) && $themes[$theme_name]->status == 1;
 }
