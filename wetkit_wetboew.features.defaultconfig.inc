@@ -14,21 +14,3 @@ function wetkit_wetboew_defaultconfig_features() {
     ),
   );
 }
-
-/**
- * Implements hook_defaultconfig_user_default_permissions().
- */
-function wetkit_wetboew_defaultconfig_user_default_permissions() {
-  $permissions = array();
-
-  // Exported permission: 'prevent wxt mobile'.
-  $permissions['prevent wxt mobile'] = array(
-    'name' => 'prevent wxt mobile',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'wetkit_wetboew',
-  );
-
-  return $permissions;
-}

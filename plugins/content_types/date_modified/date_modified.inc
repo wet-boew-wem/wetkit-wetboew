@@ -15,7 +15,6 @@ $plugin = array(
   'content_types' => array('date_modified'),
   'category' => t('WetKit'),
   'render callback' => 'wetkit_wetboew_date_modified_content_type_render',
-  'edit form' => 'wetkit_wetboew_date_modified_edit_form',
   'single' => TRUE,
 );
 
@@ -25,11 +24,10 @@ $plugin = array(
 function wetkit_wetboew_date_modified_content_type_render($subtype, $conf, $panel_args) {
   $pane = new stdClass();
 
-  $pane->content = '<dl id="gcwu-date-mod" role="contentinfo">
-  <dt>' . t('Date modified:') . '</dt>
-  <dd><span><time>' . format_date(time(), 'custom', 'Y-m-d') . '</time></span></dd>
-</dl>
-<div class="clear"></div>';
+  $pane->content = '<div class="row pagedetails"><div class="col-sm-5 col-xs-12 datemod"><dl id="wb-dtmd" property="dateModified">
+  <dt>Date modified: </dt>
+  <dd><time>' . format_date(time(), 'custom', 'Y-m-d') . '</time></dd>
+</dl></div></div>';
 
   return $pane;
 }

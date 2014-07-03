@@ -8,18 +8,6 @@ include_once 'libraries/wetkit_wetboew.libraries.inc';
 include_once 'theme/wetkit_wetboew.theme.inc';
 
 /**
- * Implements hook_permission().
- */
-function wetkit_wetboew_permission() {
-  return array(
-    'prevent wxt mobile' => array(
-      'title' => t('Prevent WxT jQuery Mobile from loading'),
-      'description' => t('Removes the WxT jQuery Mobile javacript from the footer for a specified role.'),
-    ),
-  );
-}
-
-/**
  * Implements hook_page_build().
  */
 function wetkit_wetboew_page_build() {
@@ -31,41 +19,43 @@ function wetkit_wetboew_page_build() {
 
   foreach ($base_theme_info as $base) {
     if (!empty($base->name)) {
-      if ($base->name == 'wetkit_adaptivetheme' || $base->name == 'wetkit_omega') {
+      if ($base->name == 'wetkit_bootstrap') {
         $wetkit_base_theme = TRUE;
       }
     }
   }
 
-  if (($theme == 'wetkit_adaptivetheme') || ($theme == 'wetkit_omega') || ($wetkit_base_theme == TRUE)) {
+  if (($theme == 'wetkit_bootstrap') || ($wetkit_base_theme == TRUE)) {
+
+    $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
     // Internet Theme.
-    $library = libraries_detect('wet-boew', NULL, 'internet');
-    if ((isset($library)) && !empty($library['variants']['internet']['installed'])) {
-      libraries_load('wet-boew', 'internet');
+    if ($wxt_active == 'wet-boew-gcwu-fegc') {
+      drupal_add_library('wetkit_wetboew', 'wet-boew-gcwu-fegc');
       $themekey = 'theme-gcwu-fegc';
     }
     // Intranet Theme.
-    $library = libraries_detect('wet-boew', NULL, 'intranet');
-    if ((isset($library)) && !empty($library['variants']['intranet']['installed'])) {
-      libraries_load('wet-boew', 'intranet');
+    elseif ($wxt_active == 'wet-boew-gc-intranet') {
+      drupal_add_library('wetkit_wetboew', 'wet-boew-gc-intranet');
       $themekey = 'theme-gcwu-intranet';
     }
     // Base Theme.
-    $library = libraries_detect('wet-boew', NULL, 'base');
-    if ((isset($library)) && !empty($library['variants']['base']['installed'])) {
-      libraries_load('wet-boew', 'base');
+    elseif ($wxt_active == 'wet-boew-base') {
+      drupal_add_library('wetkit_wetboew', 'wet-boew-base');
       $themekey = 'theme-base';
     }
     // OGPL Theme.
-    $library = libraries_detect('wet-boew', NULL, 'ogpl');
-    if ((isset($library)) && !empty($library['variants']['ogpl']['installed'])) {
-      libraries_load('wet-boew', 'ogpl');
+    elseif ($wxt_active == 'wet-boew-ogpl') {
+      drupal_add_library('wetkit_wetboew', 'wet-boew-ogpl');
+      $themekey = 'theme-ogpl';
+    }
+    // Canada Theme.
+    elseif ($wxt_active == 'wet-boew-gcweb') {
+      drupal_add_library('wetkit_wetboew', 'wet-boew-gcweb');
       $themekey = 'theme-ogpl';
     }
     // WET Theme.
-    $library = libraries_detect('wet-boew');
-    if ((isset($library)) && !empty($library['installed'])) {
-      libraries_load('wet-boew');
+    else {
+      drupal_add_library('wetkit_wetboew', 'wet-boew');
       $themekey = 'theme-wet-boew';
     }
   }
@@ -76,26 +66,10 @@ function wetkit_wetboew_page_build() {
     'every_page' => TRUE,
   ));
 
-  // Add the jQuery Mobile Library WET needs.
-  global $user;
-  $admin_theme = variable_get('admin_theme');
-
-  // The admin theme should never leverage JQMobile
-  if ($theme != $admin_theme) {
-    // Only load JQMobile for users without 'prevent wxt mobile' and Superuser.
-    if (!user_access('prevent wxt mobile') && $user->uid != 1) {
-      drupal_add_js(libraries_get_path('wet-boew') . '/dist/js/jquerymobile/jquery.mobile.min.js', array(
-        'preprocess' => FALSE,
-        'scope' => 'footer',
-        'weight' => 5,
-      ));
-    }
-  }
-
   // Add the noscipt css that WET expects.
   $element = array(
     '#type' => 'markup',
-    '#markup' => '<link rel="stylesheet" href="' . libraries_get_path('wet-boew', TRUE) . '/dist/' . $themekey . '/css/theme-ns-min.css" />',
+    '#markup' => '<link rel="stylesheet" href="' . libraries_get_path('wet-boew', TRUE) . '/css/noscript.css" />',
     '#prefix' => "<noscript>",
     '#suffix' => "</noscript>\n",
     '#weight' => '999',
@@ -104,10 +78,38 @@ function wetkit_wetboew_page_build() {
 }
 
 /**
+ * Implements hook_icon_bundles().
+ */
+function wetkit_wetboew_icon_bundles() {
+  $bundles = array();
+  $bundles['bootstrap'] = array(
+    'render' => 'sprite',
+    'provider' => 'bootstrap',
+    'title' => t('Bootstrap'),
+    'version' => t('Icons by Glyphicons'),
+    'variations' => array(
+      'icon-white' => t('White'),
+    ),
+    'settings' => array(
+      'tag' => 'span',
+    ),
+    'icons' => _bootstrap_glyphicons(),
+  );
+  return $bundles;
+}
+
+/**
  * Implements hook_ctools_plugin_directory().
  */
 function wetkit_wetboew_ctools_plugin_directory($module, $plugin) {
   return 'plugins/' . $plugin;
+}
+
+function wetkit_wetboew_admin_paths() {
+  $paths = array(
+    'admin/dashboard' => FALSE,
+  );
+  return $paths;
 }
 
 /**
@@ -137,16 +139,21 @@ function wetkit_wetboew_configure_form($form, &$form_state) {
   );
   $form['wetkit_wetboew']['wetkit_wetboew_theme'] = array(
     '#type' => 'select',
-    '#title' => t('Please choose the desired theme:'),
-    '#options' => array(
-      0 => t('WxT'),
-      1 => t('Internet'),
-      2 => t('Intranet'),
-      3 => t('Base'),
-      4 => t('OGPL'),
-    ),
-    '#default_value' => variable_get('wetkit_wetboew_theme', 0),
+    '#title' => t('Select Theme:'),
+    '#options' => _wetkit_wetboew_options(),
+    '#default_value' => variable_get('wetkit_wetboew_theme', 'wet-boew'),
     '#description' => t('This will change the theme by adding custom css and logic to support the various Drupal WxT based themes.'),
+  );
+
+  $form['wetkit_wetboew']['wetkit_wetboew_minified'] = array(
+    '#type' => 'select',
+    '#title' => t('Development Mode:'),
+    '#options' => array(
+      'minified' => t('Minified'),
+      'unminified' => t('Unminified'),
+    ),
+    '#default_value' => variable_get('wetkit_wetboew_minified', 'minified'),
+    '#description' => t('This will change the themes loaded files into either minified or unminified form.'),
   );
 
   $form['#submit'][] = 'wetkit_wetboew_configure_form_submit';
@@ -165,29 +172,6 @@ function wetkit_wetboew_configure_form($form, &$form_state) {
 function wetkit_wetboew_configure_form_submit($form, &$form_state) {
   // Change query-strings on css/js files to enforce reload for all users.
   _drupal_flush_css_js();
-
-  registry_rebuild();
-  drupal_clear_css_cache();
-  drupal_clear_js_cache();
-
-  // Rebuild the theme data. Note that the module data is rebuilt above, as
-  // part of registry_rebuild().
-  system_rebuild_theme_data();
-  drupal_theme_rebuild();
-
-  // Don't clear cache_form - in-progress form submissions may break.
-  // Ordered so clearing the page cache will always be the last action.
-  $core = array(
-    'cache',
-    'cache_path',
-    'cache_filter',
-    'cache_bootstrap',
-    'cache_page',
-  );
-  $cache_tables = array_merge(module_invoke_all('flush_caches'), $core);
-  foreach ($cache_tables as $table) {
-    cache_clear_all('*', $table, TRUE);
-  }
 }
 
 /**
@@ -211,10 +195,10 @@ function wetkit_wetboew_theme($existing, $type, $theme, $path) {
       'render element' => 'element',
       'file' => 'theme/wetkit_wetboew.theme.inc',
     ),
-    'wetkit_wetboew_status_messages' => array(
-      'render element' => 'element',
-      'file' => 'theme/wetkit_wetboew.theme.inc',
-    ),
+    //'wetkit_wetboew_status_messages' => array(
+    //  'render element' => 'element',
+    //  'file' => 'theme/wetkit_wetboew.theme.inc',
+    //),
     'wetkit_wetboew_tablefield_view' => array(
       'file' => 'theme/wetkit_wetboew.theme.inc',
       'variables' => array(
@@ -236,15 +220,15 @@ function wetkit_wetboew_preprocess_status_messages(&$variables) {
 
   foreach ($base_theme_info as $base) {
     if (!empty($base->name)) {
-      if ($base->name == 'wetkit_adaptivetheme' || $base->name == 'wetkit_omega') {
+      if ($base->name == 'wetkit_bootstrap') {
         $wetkit_base_theme = TRUE;
       }
     }
   }
 
-  if (($theme == 'wetkit_adaptivetheme') || ($theme == 'wetkit_omega') || ($wetkit_base_theme == TRUE)) {
-    $variables['theme_hook_suggestions'][] = 'wetkit_wetboew_status_messages';
-  }
+  //if (($theme == 'wetkit_bootstrap') || ($wetkit_base_theme == TRUE)) {
+  //  $variables['theme_hook_suggestions'][] = 'wetkit_wetboew_status_messages';
+  //}
 }
 
 /**
@@ -257,13 +241,27 @@ function wetkit_wetboew_preprocess_tablefield_view(&$variables) {
 
   foreach ($base_theme_info as $base) {
     if (!empty($base->name)) {
-      if ($base->name == 'wetkit_adaptivetheme' || $base->name == 'wetkit_omega') {
+      if ($base->name == 'wetkit_bootstrap') {
         $wetkit_base_theme = TRUE;
       }
     }
   }
 
-  if (($theme == 'wetkit_adaptivetheme') || ($theme == 'wetkit_omega') || ($wetkit_base_theme == TRUE)) {
+  if (($theme == 'wetkit_bootstrap') || ($wetkit_base_theme == TRUE)) {
     $variables['theme_hook_suggestions'][] = 'wetkit_wetboew_tablefield_view';
   }
+}
+
+/**
+ * WxT theme options.
+ */
+function _wetkit_wetboew_options() {
+  return array(
+    'wet-boew' => t('WxT'),
+    'wet-boew-gcwu-fegc' => t('Internet'),
+    'wet-boew-gc-intranet' => t('Intranet'),
+    'wet-boew-base' => t('Base'),
+    'wet-boew-ogpl' => t('OGPL'),
+    'wet-boew-gcweb' => t('Canada'),
+  );
 }
