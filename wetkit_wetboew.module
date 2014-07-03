@@ -28,6 +28,7 @@ function wetkit_wetboew_page_build() {
   if (($theme == 'wetkit_bootstrap') || ($wetkit_base_theme == TRUE)) {
 
     $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
+
     // Internet Theme.
     if ($wxt_active == 'wet-boew-gcwu-fegc') {
       drupal_add_library('wetkit_wetboew', 'wet-boew-gcwu-fegc');
