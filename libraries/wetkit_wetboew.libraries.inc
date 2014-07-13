@@ -101,7 +101,7 @@ function wetkit_wetboew_libraries_info() {
                   'unmin/css/ie8-wet-boew.css' => array(
                     'browsers' => array(
                       'IE' => 'lt IE 9',
-                      '!IE' => TRUE,
+                      '!IE' => FALSE,
                     ),
                     'group' => CSS_THEME,
                     //'every_page' => TRUE,
@@ -157,7 +157,7 @@ function wetkit_wetboew_libraries_info() {
                   'css/ie8-wet-boew.min.css' => array(
                     'browsers' => array(
                       'IE' => 'lt IE 9',
-                      '!IE' => TRUE,
+                      '!IE' => FALSE,
                     ),
                     'group' => CSS_DEFAULT,
                     'every_page' => TRUE,
