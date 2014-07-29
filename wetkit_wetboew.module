@@ -107,16 +107,6 @@ function wetkit_wetboew_ctools_plugin_directory($module, $plugin) {
 }
 
 /**
- * Implements hook_admin_paths().
- */
-function wetkit_wetboew_admin_paths() {
-  $paths = array(
-    'admin/dashboard' => FALSE,
-  );
-  return $paths;
-}
-
-/**
  * Implements hook_apps_app_info().
  */
 function wetkit_wetboew_apps_app_info() {
