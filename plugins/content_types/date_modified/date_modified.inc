@@ -24,10 +24,10 @@ $plugin = array(
 function wetkit_wetboew_date_modified_content_type_render($subtype, $conf, $panel_args) {
   $pane = new stdClass();
 
-  $pane->content = '<div class="row pagedetails"><div class="col-sm-5 col-xs-12 datemod"><dl id="wb-dtmd">
+  $pane->content = '<div class="datemod"><dl id="wb-dtmd">
   <dt>Date modified: </dt>
   <dd><time property="dateModified">' . format_date(time(), 'custom', 'Y-m-d') . '</time></dd>
-</dl></div></div>';
+</dl></div>';
 
   return $pane;
 }
