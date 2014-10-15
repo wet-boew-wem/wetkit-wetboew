@@ -28,21 +28,24 @@ function wetkit_wetboew_archived_widget_content_type_render($subtype, $conf, $pa
 
   // Get the Node and confirm whether it is flagged as archive.
   $node = isset($context->data) ? clone($context->data) : NULL;
-
-  $title = t('Archived Content');
-  $body = t('Information identified as archived is provided for reference, research or recordkeeping purposes. It is not subject to the Government of Canada Web Standards and has not been altered or updated since it was archived. Please contact us to request a format other than those available.');
-  $span_class = (isset($conf['span_item'])) ? $conf['span_item'] : 'span-6';
-
   $field_archived = field_get_items('node', $node, 'field_archived_content');
+
+  // Render the archived widget markup.
   if ($field_archived['0']['value'] == '1') {
     $pane = new stdClass();
-    $pane->content = '<div id="archived" class="wet-boew-archived ' . $span_class . '" data-load="archived"><section><h2>' . $title . '</h2><p>' . $body . '</p></section></div>';
+    $pane->content = '<section id="archived" class="alert alert-warning wb-inview" data-inview="archived-bnr">
+      <h2>' . t('This page has been archived on the Web.') . '</h2>
+      <p>' . t('Information identified as archived is provided for reference, research or recordkeeping purposes. It is not subject to the Government of Canada Web Standards and has not been altered or updated since it was archived. Please contact us to request a format other than those available.') . '</p>
+    </section>
+    <section id="archived-bnr" class="wb-overlay modal-content overlay-def wb-bar-t">
+      <header><h2 class="wb-inv">' . t('Archived') . '</h2></header>
+      <p><a href="#archived">' . t('This page has been archived on the Web.') . '</a></p>
+    </section>';
     return $pane;
   }
   else {
     return;
   }
-
 }
 
 /**
@@ -51,15 +54,6 @@ function wetkit_wetboew_archived_widget_content_type_render($subtype, $conf, $pa
 function wetkit_wetboew_archived_widget_edit_form($form, &$form_state) {
   $conf = $form_state['conf'];
 
-  $form['span_item'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Span Class for Archived Message'),
-    '#size' => 50,
-    '#description' => t('Setting for span class.'),
-    '#default_value' => !empty($conf['span_item']) ? $conf['span_item'] : 'span-6',
-    '#prefix' => '<div class="clear-block no-float">',
-    '#suffix' => '</div>',
-  );
   return $form;
 }
 
