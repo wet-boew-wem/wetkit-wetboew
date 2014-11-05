@@ -145,13 +145,13 @@ function wetkit_wetboew_libraries_info() {
                     ),
                     'group' => CSS_DEFAULT,
                     'every_page' => TRUE,
-                    'preprocess' => FALSE,
+                    'preprocess' => TRUE,
                     'weight' => 5,
                   ),
                   'css/theme.min.css' => array(
                     'group' => CSS_DEFAULT,
                     'every_page' => TRUE,
-                    'preprocess' => FALSE,
+                    'preprocess' => TRUE,
                     'weight' => 5,
                   ),
                   'css/ie8-wet-boew.min.css' => array(
@@ -161,7 +161,7 @@ function wetkit_wetboew_libraries_info() {
                     ),
                     'group' => CSS_DEFAULT,
                     'every_page' => TRUE,
-                    'preprocess' => FALSE,
+                    'preprocess' => TRUE,
                     'weight' => 5,
                   ),
                 ),
@@ -171,16 +171,28 @@ function wetkit_wetboew_libraries_info() {
                       'IE' => 'gte IE 9',
                       '!IE' => TRUE,
                     ),
+                    'every_page' => TRUE,
                     'preprocess' => FALSE,
                     'scope' => 'footer',
                     'weight' => 5,
+                  ),
+                  'js/ie8-wet-boew.min.js' => array(
+                    'browsers' => array(
+                      'IE' => 'lt IE 9',
+                      '!IE' => FALSE,
+                    ),
+                    'every_page' => TRUE,
+                    'preprocess' => TRUE,
+                    'scope' => 'header',
+                    'weight' => 6,
                   ),
                   'js/ie8-wet-boew2.min.js' => array(
                     'browsers' => array(
                       'IE' => 'lt IE 9',
                       '!IE' => FALSE,
                     ),
-                    'preprocess' => FALSE,
+                    'every_page' => TRUE,
+                    'preprocess' => TRUE,
                     'scope' => 'footer',
                     'weight' => 6,
                   ),
@@ -202,9 +214,8 @@ function wetkit_wetboew_libraries_info() {
       foreach ($variant_order as $variant) {
         $css = ($variant == 'source') ? 'unmin/css/messages.css' : 'css/messages.min.css';
         $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['css'][$css] = array(
-          //'group' => CSS_DEFAULT,
-          //'every_page' => TRUE,
-          'preprocess' => FALSE,
+          'every_page' => TRUE,
+          'preprocess' => TRUE,
           'weight' => 5,
         );
       }

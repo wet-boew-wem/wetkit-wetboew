@@ -25,7 +25,7 @@ function wetkit_wetboew_date_modified_content_type_render($subtype, $conf, $pane
   $pane = new stdClass();
 
   $pane->content = '<div class="datemod"><dl id="wb-dtmd">
-  <dt>Date modified: </dt>
+  <dt>' .  t('Date modified:') . '</dt>
   <dd><time property="dateModified">' . format_date(time(), 'custom', 'Y-m-d') . '</time></dd>
 </dl></div>';
 
