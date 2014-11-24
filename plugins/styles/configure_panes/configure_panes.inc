@@ -38,6 +38,9 @@ function theme_wetkit_configure_panes_render_pane($vars) {
     array_push($class_stack, $settings['configure_pane_custom_css']);
   }
   $class_stack = implode(" ", $class_stack);
+  if (!isset($content->css_class)) {
+    $content->css_class = '';
+  }
   $content->css_class .= ' ' . $class_stack;
   return theme('panels_pane', array(
     'content' => $content,
