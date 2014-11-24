@@ -42,6 +42,9 @@ function theme_wetkit_configure_panes_render_pane($vars) {
     $content->css_class = '';
   }
   $content->css_class .= ' ' . $class_stack;
+  if (!isset($content->css_class)) {
+    $content->css_class = '';
+  }
   return theme('panels_pane', array(
     'content' => $content,
     'pane' => $pane,
