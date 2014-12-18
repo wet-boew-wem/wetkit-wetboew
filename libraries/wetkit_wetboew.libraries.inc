@@ -214,8 +214,21 @@ function wetkit_wetboew_libraries_info() {
       foreach ($variant_order as $variant) {
         $css = ($variant == 'source') ? 'unmin/css/messages.css' : 'css/messages.min.css';
         $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['css'][$css] = array(
+          'group' => CSS_DEFAULT,
           'every_page' => TRUE,
           'preprocess' => TRUE,
+          'weight' => 5,
+        );
+
+        $ie8_css = ($variant == 'source') ? 'unmin/css/messages-ie.min.css' : 'css/messages-ie.min.css';
+        $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['css'][$ie8_css] = array(
+          'browsers' => array(
+            'IE' => 'lt IE 9',
+            '!IE' => FALSE,
+          ),
+          'group' => CSS_DEFAULT,
+          'every_page' => TRUE,
+          'preprocess' => FALSE,
           'weight' => 5,
         );
       }
