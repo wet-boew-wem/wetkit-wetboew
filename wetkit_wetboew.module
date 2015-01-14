@@ -84,7 +84,8 @@ function wetkit_wetboew_page_build() {
   if ($theme != $admin_theme) {
     // Only load JQMobile for users without 'prevent wxt mobile' and Superuser.
     if (!user_access('prevent wxt mobile') && $user->uid != 1) {
-      drupal_add_js(libraries_get_path('wet-boew') . '/dist/js/jquerymobile/jquery.mobile.min.js', array(
+      $wxt_mobile = libraries_get_path('wet-boew', TRUE) . '/dist/js/jquerymobile/jquery.mobile.min.js';
+      drupal_add_js($wxt_mobile, array(
         'preprocess' => FALSE,
         'scope' => 'footer',
         'weight' => 5,
