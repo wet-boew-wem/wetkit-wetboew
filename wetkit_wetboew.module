@@ -14,6 +14,8 @@ function wetkit_wetboew_page_build() {
   // Only use WET-BOEW on Front End.
   global $theme;
   global $base_theme_info;
+  global $base_url;
+
   $wetkit_base_theme = FALSE;
   $themekey = 'theme-gcwu-fegc';
 
@@ -68,9 +70,10 @@ function wetkit_wetboew_page_build() {
   ));
 
   // Add the noscipt css that WET expects.
+  $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
   $element = array(
     '#type' => 'markup',
-    '#markup' => '<link rel="stylesheet" href="' . libraries_get_path('wet-boew', TRUE) . '/css/noscript.css" />',
+    '#markup' => '<link rel="stylesheet" href="' . $base_url . libraries_get_path($wxt_active, TRUE) . '/css/noscript.min.css" />',
     '#prefix' => "<noscript>",
     '#suffix' => "</noscript>\n",
     '#weight' => '999',

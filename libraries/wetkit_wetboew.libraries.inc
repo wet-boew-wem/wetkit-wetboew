@@ -208,6 +208,19 @@ function wetkit_wetboew_libraries_info() {
       ),
     );
 
+    // Theme variants specific theme markup
+    if ($wxt_library != 'wet-boew') {
+      // CSS aditions for GCWU-FEGC.
+      foreach ($variant_order as $variant) {
+       $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['js']['js/theme.min.js'] = array(
+          'every_page' => TRUE,
+          'preprocess' => FALSE,
+          'scope' => 'footer',
+          'weight' => 7,
+        );
+      }
+    }
+
     // GCWEB specific theme markup.
     if ($wxt_library == 'wet-boew-gcweb') {
       // CSS aditions for GCWEB.
@@ -233,24 +246,6 @@ function wetkit_wetboew_libraries_info() {
         );
       }
     }
-
-    // GCWU-FEGC specific theme markup.
-    /**
-    if ($wxt_library == 'wet-boew-gcwu-fegc') {
-      // CSS aditions for GCWU-FEGC.
-      foreach ($variant_order as $variant) {
-        $css = ($variant == 'source') ? 'unmin/css/theme-sp-pe.css' : 'css/theme-sp-pe.min.css';
-        $css_remove = ($variant == 'source') ? 'unmin/css/theme.css' : 'css/theme.min.css';
-        $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['css'][$css] = array(
-          //'group' => CSS_DEFAULT,
-          //'every_page' => TRUE,
-          'preprocess' => FALSE,
-          'weight' => 5,
-        );
-        unset($libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['css'][$css_remove]);
-      }
-    }
-    */
 
     $libraries[$wxt_library] += $common;
   }
