@@ -31,7 +31,7 @@ function wetkit_wetboew_date_modified_content_type_render($subtype, $conf, $pane
 
   // Node Context
   if (!empty($context[0]) && !empty($context[0]->data)) {
-    $date = $context[0]->data->changed;
+    $date = $context[0]->data->created;
     $pane->content .= '<dd><time property="dateModified">' . format_date($date, 'custom', 'Y-m-d') . '</time></dd>';
   }
   // Fallback
