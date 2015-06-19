@@ -14,6 +14,9 @@ $plugin = array(
   'description' => t('This pane will leverage custom tokens to print out a Date Modified string.'),
   'content_types' => array('date_modified'),
   'category' => t('WetKit'),
+  'required context' => array(
+    new ctools_context_optional(t('Node'), 'node'),
+  ),
   'render callback' => 'wetkit_wetboew_date_modified_content_type_render',
   'single' => TRUE,
 );
@@ -21,13 +24,21 @@ $plugin = array(
 /**
  * Output function for the 'date_modified' content type.
  */
-function wetkit_wetboew_date_modified_content_type_render($subtype, $conf, $panel_args) {
+function wetkit_wetboew_date_modified_content_type_render($subtype, $conf, $panel_args, $context) {
   $pane = new stdClass();
+  $pane->content = '<div class="datemod"><dl id="wb-dtmd">' . "\n";
+  $pane->content .= '<dt>' .  t('Date modified:') . '</dt>' . "\n";
 
-  $pane->content = '<div class="datemod"><dl id="wb-dtmd">
-  <dt>' .  t('Date modified:') . '</dt>
-  <dd><time property="dateModified">' . format_date(time(), 'custom', 'Y-m-d') . '</time></dd>
-</dl></div>';
+  // Node Context
+  if (!empty($context[0]) && !empty($context[0]->data)) {
+    $date = $context[0]->data->changed;
+    $pane->content .= '<dd><time property="dateModified">' . format_date($date, 'custom', 'Y-m-d') . '</time></dd>';
+  }
+  // Fallback
+  else {
+    $pane->content .= '<dd><time property="dateModified">' . format_date(time(), 'custom', 'Y-m-d') . '</time></dd>';
+  }
 
+  $pane->content .= '</dl></div>';
   return $pane;
 }
