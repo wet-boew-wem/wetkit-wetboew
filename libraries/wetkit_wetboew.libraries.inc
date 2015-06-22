@@ -87,26 +87,26 @@ function wetkit_wetboew_libraries_info() {
                       'IE' => 'gte IE 9',
                       '!IE' => TRUE,
                     ),
-                    'group' => CSS_THEME,
-                    //'every_page' => TRUE,
-                    'preprocess' => FALSE,
-                    'weight' => 5,
+                    'group' => CSS_DEFAULT,
+                    'every_page' => TRUE,
+                    'preprocess' => TRUE,
+                    'weight' => -50,
                   ),
                   'unmin/css/theme.css' => array(
-                    'group' => CSS_THEME,
-                    //'every_page' => TRUE,
-                    'preprocess' => FALSE,
-                    'weight' => 5,
+                    'group' => CSS_DEFAULT,
+                    'every_page' => TRUE,
+                    'preprocess' => TRUE,
+                    'weight' => -50,
                   ),
                   'unmin/css/ie8-wet-boew.css' => array(
                     'browsers' => array(
                       'IE' => 'lt IE 9',
                       '!IE' => FALSE,
                     ),
-                    'group' => CSS_THEME,
-                    //'every_page' => TRUE,
+                    'group' => CSS_DEFAULT,
+                    'every_page' => TRUE,
                     'preprocess' => FALSE,
-                    'weight' => 5,
+                    'weight' => -50,
                   ),
                 ),
                 'js' => array(
@@ -115,16 +115,28 @@ function wetkit_wetboew_libraries_info() {
                       'IE' => 'gte IE 9',
                       '!IE' => TRUE,
                     ),
+                    'every_page' => TRUE,
                     'preprocess' => FALSE,
                     'scope' => 'footer',
                     'weight' => 5,
+                  ),
+                  'unmin/js/ie8-wet-boew.min.js' => array(
+                    'browsers' => array(
+                      'IE' => 'lt IE 9',
+                      '!IE' => FALSE,
+                    ),
+                    'every_page' => TRUE,
+                    'preprocess' => FALSE,
+                    'scope' => 'header',
+                    'weight' => 6,
                   ),
                   'unmin/js/ie8-wet-boew2.js' => array(
                     'browsers' => array(
                       'IE' => 'lt IE 9',
                       '!IE' => FALSE,
                     ),
-                    'preprocess' => FALSE,
+                    'every_page' => TRUE,
+                    'preprocess' => TRUE,
                     'scope' => 'footer',
                     'weight' => 6,
                   ),
@@ -146,13 +158,13 @@ function wetkit_wetboew_libraries_info() {
                     'group' => CSS_DEFAULT,
                     'every_page' => TRUE,
                     'preprocess' => TRUE,
-                    'weight' => 5,
+                    'weight' => -50,
                   ),
                   'css/theme.min.css' => array(
                     'group' => CSS_DEFAULT,
                     'every_page' => TRUE,
                     'preprocess' => TRUE,
-                    'weight' => 5,
+                    'weight' => -50,
                   ),
                   'css/ie8-wet-boew.min.css' => array(
                     'browsers' => array(
@@ -162,7 +174,7 @@ function wetkit_wetboew_libraries_info() {
                     'group' => CSS_DEFAULT,
                     'every_page' => TRUE,
                     'preprocess' => FALSE,
-                    'weight' => 5,
+                    'weight' => -50,
                   ),
                 ),
                 'js' => array(
@@ -212,7 +224,9 @@ function wetkit_wetboew_libraries_info() {
     if ($wxt_library != 'wet-boew') {
       // CSS aditions for GCWU-FEGC.
       foreach ($variant_order as $variant) {
-       $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['js']['js/theme.min.js'] = array(
+       $js = ($variant == 'source') ? 'unmin/js/theme.js' : 'js/theme.min.js';
+       $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['js'][$js] = array(
+          'group' => CSS_DEFAULT,
           'every_page' => TRUE,
           'preprocess' => FALSE,
           'scope' => 'footer',
