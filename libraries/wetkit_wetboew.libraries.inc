@@ -120,7 +120,7 @@ function wetkit_wetboew_libraries_info() {
                     'scope' => 'footer',
                     'weight' => 5,
                   ),
-                  'unmin/js/ie8-wet-boew.min.js' => array(
+                  'unmin/js/ie8-wet-boew.js' => array(
                     'browsers' => array(
                       'IE' => 'lt IE 9',
                       '!IE' => FALSE,
