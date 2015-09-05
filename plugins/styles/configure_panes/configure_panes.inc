@@ -5,7 +5,7 @@
  */
 
 $plugin = array(
-  'title' => t('WetKit Configure Panes'),
+  'title' => t('Configure Panes'),
   'description' => t('Wraps Panel Panes into different WetKit pre-configured styles.'),
   'render pane' => 'wetkit_configure_panes_render_pane',
   'pane settings form' => 'wetkit_configure_panes_style_settings_form',
