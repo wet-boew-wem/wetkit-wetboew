@@ -6,19 +6,22 @@ core = 7.x
 ; Library for the Web Experience Toolkit jQuery Framework
 
 libraries[wet-boew][download][type] = get
-libraries[wet-boew][download][url] = https://github.com/wet-boew/wet-boew/releases/download/v4.0.14/wet-boew-dist-4.0.14.zip
+libraries[wet-boew][download][url] = https://github.com/wet-boew/wet-boew-cdn/archive/v4.0.16.tar.gz
 
-libraries[wet-boew-base][download][type] = get
-libraries[wet-boew-base][download][url] = https://github.com/wet-boew/theme-base/releases/download/v4.0.14/themes-dist-4.0.14-theme-base.zip
+libraries[theme-wet-boew][download][type] = get
+libraries[theme-wet-boew][download][url] = https://github.com/wet-boew/themes-cdn/archive/v4.0.16-theme-wet-boew.tar.gz
 
-libraries[wet-boew-gc-intranet][download][type] = get
-libraries[wet-boew-gc-intranet][download][url] = https://github.com/wet-boew/theme-gc-intranet/releases/download/v4.0.14/themes-dist-4.0.14-theme-gc-intranet.zip
+libraries[theme-base][download][type] = get
+libraries[theme-base][download][url] = https://github.com/wet-boew/themes-cdn/archive/v4.0.16-theme-base.tar.gz
 
-libraries[wet-boew-gcweb][download][type] = get
-libraries[wet-boew-gcweb][download][url] = https://github.com/wet-boew/GCWeb/releases/download/v4.0.14/themes-dist-4.0.14-gcweb.zip
+libraries[theme-gc-intranet][download][type] = get
+libraries[theme-gc-intranet][download][url] = https://github.com/wet-boew/themes-cdn/archive/v4.0.16-theme-gc-intranet.tar.gz
 
-libraries[wet-boew-gcwu-fegc][download][type] = get
-libraries[wet-boew-gcwu-fegc][download][url] = https://github.com/wet-boew/theme-gcwu-fegc/releases/download/v4.0.14/themes-dist-4.0.14-theme-gcwu-fegc.zip
+libraries[theme-gcwu-fegc][download][type] = get
+libraries[theme-gcwu-fegc][download][url] = https://github.com/wet-boew/themes-cdn/archive/v4.0.16-theme-gcweu-fegc.tar.gz
 
-libraries[wet-boew-ogpl][download][type] = get
-libraries[wet-boew-ogpl][download][url] = https://github.com/wet-boew/theme-ogpl/releases/download/v4.0.14/themes-dist-4.0.14-theme-ogpl.zip
+libraries[theme-gcweb][download][type] = get
+libraries[theme-gcweb][download][url] = https://github.com/wet-boew/themes-cdn/archive/v4.0.16-gcweb.tar.gz
+
+libraries[theme-ogpl][download][type] = get
+libraries[theme-ogpl][download][url] = https://github.com/wet-boew/themes-cdn/archive/v4.0.16-theme-ogpl.tar.gz

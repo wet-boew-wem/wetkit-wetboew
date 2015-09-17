@@ -17,3 +17,15 @@ function wetkit_wetboew_uninstall() {
     }
   }
 }
+
+/**
+ *  Change in WxT Active theme variable name.
+ */
+function wetkit_wetboew_update_7401() {
+  $theme = variable_get('wetkit_wetboew_theme', 'theme-wet-boew');
+  $theme = str_replace('wet-boew-', 'theme-', $theme);
+  if ($theme == 'wet-boew') {
+    $theme = 'theme-wet-boew';
+  }
+  variable_get('wetkit_wetboew_theme', $theme);
+}

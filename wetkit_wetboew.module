@@ -29,36 +29,39 @@ function wetkit_wetboew_page_build() {
 
   if (($theme == 'wetkit_bootstrap') || ($wetkit_base_theme == TRUE)) {
 
-    $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
+    $wxt_active = variable_get('wetkit_wetboew_theme', 'theme-wet-boew');
+
+    // WxT Core.
+    drupal_add_library('wetkit_wetboew', 'wet-boew');
 
     // Internet Theme.
-    if ($wxt_active == 'wet-boew-gcwu-fegc') {
-      drupal_add_library('wetkit_wetboew', 'wet-boew-gcwu-fegc');
+    if ($wxt_active == 'theme-gcwu-fegc') {
+      drupal_add_library('wetkit_wetboew', $wxt_active);
       $themekey = 'theme-gcwu-fegc';
     }
     // Intranet Theme.
-    elseif ($wxt_active == 'wet-boew-gc-intranet') {
-      drupal_add_library('wetkit_wetboew', 'wet-boew-gc-intranet');
+    elseif ($wxt_active == 'theme-gc-intranet') {
+      drupal_add_library('wetkit_wetboew', $wxt_active);
       $themekey = 'theme-gcwu-intranet';
     }
     // Base Theme.
-    elseif ($wxt_active == 'wet-boew-base') {
-      drupal_add_library('wetkit_wetboew', 'wet-boew-base');
+    elseif ($wxt_active == 'theme-base') {
+      drupal_add_library('wetkit_wetboew', $wxt_active);
       $themekey = 'theme-base';
     }
     // OGPL Theme.
-    elseif ($wxt_active == 'wet-boew-ogpl') {
-      drupal_add_library('wetkit_wetboew', 'wet-boew-ogpl');
+    elseif ($wxt_active == 'theme-ogpl') {
+      drupal_add_library('wetkit_wetboew', $wxt_active);
       $themekey = 'theme-ogpl';
     }
     // Canada Theme.
-    elseif ($wxt_active == 'wet-boew-gcweb') {
-      drupal_add_library('wetkit_wetboew', 'wet-boew-gcweb');
+    elseif ($wxt_active == 'theme-gcweb') {
+      drupal_add_library('wetkit_wetboew', $wxt_active);
       $themekey = 'theme-ogpl';
     }
     // WET Theme.
     else {
-      drupal_add_library('wetkit_wetboew', 'wet-boew');
+      drupal_add_library('wetkit_wetboew', 'theme-wet-boew');
       $themekey = 'theme-wet-boew';
     }
   }
@@ -70,7 +73,7 @@ function wetkit_wetboew_page_build() {
   ));
 
   // Add the noscipt css that WET expects.
-  $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
+  $wxt_active = variable_get('wetkit_wetboew_theme', 'theme-wet-boew');
   $element = array(
     '#type' => 'markup',
     '#markup' => '<link rel="stylesheet" href="' . $base_url . libraries_get_path($wxt_active, TRUE) . '/css/noscript.min.css" />',
@@ -138,7 +141,7 @@ function wetkit_wetboew_configure_form($form, &$form_state) {
     '#type' => 'select',
     '#title' => t('Select Theme:'),
     '#options' => _wetkit_wetboew_options(),
-    '#default_value' => variable_get('wetkit_wetboew_theme', 'wet-boew'),
+    '#default_value' => variable_get('wetkit_wetboew_theme', 'theme-wet-boew'),
     '#description' => t('This will change the theme by adding custom css and logic to support the various Drupal WxT based themes.'),
   );
 
@@ -234,12 +237,12 @@ function wetkit_wetboew_preprocess_tablefield_view(&$variables) {
  */
 function _wetkit_wetboew_options() {
   return array(
-    'wet-boew' => t('WxT'),
-    'wet-boew-gcwu-fegc' => t('Internet'),
-    'wet-boew-gc-intranet' => t('Intranet'),
-    'wet-boew-base' => t('Base'),
-    'wet-boew-ogpl' => t('OGPL'),
-    'wet-boew-gcweb' => t('Canada'),
+    'theme-wet-boew' => t('WxT'),
+    'theme-gcwu-fegc' => t('Internet'),
+    'theme-gc-intranet' => t('Intranet'),
+    'theme-base' => t('Base'),
+    'theme-ogpl' => t('OGPL'),
+    'theme-gcweb' => t('Canada'),
   );
 }
 

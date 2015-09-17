@@ -14,12 +14,13 @@ function wetkit_wetboew_library() {
   // Ensure that each 3rd party library dependency has a default variant.
   // Convert Libraries module data structures to library data structures.
   $wxt_libraries = array(
-    'wet-boew' => 'WxT Usability Theme',
-    'wet-boew-base' => 'WxT Base Theme',
-    'wet-boew-gc-intranet' => 'WxT Intranet Theme for Government of Canada',
-    'wet-boew-gcweb' => 'WxT Canada Theme for Government of Canada',
-    'wet-boew-gcwu-fegc' => 'WxT Internet Theme for Government of Canada',
-    'wet-boew-ogpl' => 'WxT Open Government Platform Theme',
+    'wet-boew' => 'WxT Core',
+    'theme-wet-boew' => 'WxT Usability Theme',
+    'theme-base' => 'WxT Base Theme',
+    'theme-gc-intranet' => 'WxT Intranet Theme for Government of Canada',
+    'theme-gcweb' => 'WxT Canada Theme for Government of Canada',
+    'theme-gcwu-fegc' => 'WxT Internet Theme for Government of Canada',
+    'theme-ogpl' => 'WxT Open Government Platform Theme',
   );
 
   foreach ($wxt_libraries as $wxt_library => $name) {
@@ -48,183 +49,246 @@ function wetkit_wetboew_libraries_info() {
   );
 
   $wxt_libraries = array(
-    'wet-boew' => 'WxT Usability Theme',
-    'wet-boew-base' => 'WxT Base Theme',
-    'wet-boew-gc-intranet' => 'WxT Intranet Theme for Government of Canada',
-    'wet-boew-gcweb' => 'WxT Canada Theme for Government of Canada',
-    'wet-boew-gcwu-fegc' => 'WxT Internet Theme for Government of Canada',
-    'wet-boew-ogpl' => 'WxT Open Government Platform Theme',
+    'wet-boew' => 'WxT Core',
+    'theme-wet-boew' => 'WxT Usability Theme',
+    'theme-base' => 'WxT Base Theme',
+    'theme-gc-intranet' => 'WxT Intranet Theme for Government of Canada',
+    'theme-gcweb' => 'WxT Canada Theme for Government of Canada',
+    'theme-gcwu-fegc' => 'WxT Internet Theme for Government of Canada',
+    'theme-ogpl' => 'WxT Open Government Platform Theme',
   );
 
   foreach ($wxt_libraries as $wxt_library => $name) {
-    $libraries[$wxt_library] = array(
-      'name' => 'Web Experience Toolkit',
-      'vendor url' => 'https://github.com/wet-boew/wet-boew',
-      'download url' => 'https://github.com/wet-boew/wet-boew/downloads',
-      'version arguments' => array(
-        'variants' => array(
-          'source' => array(
-            'file' => 'unmin/js/wet-boew.min.js',
-            'pattern' => '#\s+[Vv]([0-9\.]+)#',
-            'lines' => 5,
-          ),
-          'minified' => array(
-            'file' => 'js/wet-boew.min.js',
-            'pattern' => '#\s+[Vv]([0-9\.]+)#',
-            'lines' => 5,
-          ),
-        ),
-      ),
-      'versions' => array(
-        // Means ">=4.0.2": matches 4.0.2, 4.0.3, etc.
-        '4.0.2' => array(
+    // WxT Core
+    if ($wxt_library == 'wet-boew') {
+      $libraries[$wxt_library] = array(
+        'name' => 'Web Experience Toolkit Core',
+        'vendor url' => 'https://github.com/wet-boew/wet-boew',
+        'download url' => 'https://github.com/wet-boew/wet-boew/downloads',
+        'version arguments' => array(
           'variants' => array(
             'source' => array(
-              'files' => array(
-                'css' => array(
-                  'unmin/css/wet-boew.css' => array(
-                    'browsers' => array(
-                      'IE' => 'gte IE 9',
-                      '!IE' => TRUE,
-                    ),
-                    'group' => CSS_DEFAULT,
-                    'every_page' => TRUE,
-                    'preprocess' => TRUE,
-                    'weight' => -50,
-                  ),
-                  'unmin/css/theme.css' => array(
-                    'group' => CSS_DEFAULT,
-                    'every_page' => TRUE,
-                    'preprocess' => TRUE,
-                    'weight' => -50,
-                  ),
-                  'unmin/css/ie8-wet-boew.css' => array(
-                    'browsers' => array(
-                      'IE' => 'lt IE 9',
-                      '!IE' => FALSE,
-                    ),
-                    'group' => CSS_DEFAULT,
-                    'every_page' => TRUE,
-                    'preprocess' => FALSE,
-                    'weight' => -50,
-                  ),
-                ),
-                'js' => array(
-                  'unmin/js/wet-boew.js' => array(
-                    'browsers' => array(
-                      'IE' => 'gte IE 9',
-                      '!IE' => TRUE,
-                    ),
-                    'every_page' => TRUE,
-                    'preprocess' => FALSE,
-                    'scope' => 'footer',
-                    'weight' => 5,
-                  ),
-                  'unmin/js/ie8-wet-boew.js' => array(
-                    'browsers' => array(
-                      'IE' => 'lt IE 9',
-                      '!IE' => FALSE,
-                    ),
-                    'every_page' => TRUE,
-                    'preprocess' => FALSE,
-                    'scope' => 'header',
-                    'weight' => 6,
-                  ),
-                  'unmin/js/ie8-wet-boew2.js' => array(
-                    'browsers' => array(
-                      'IE' => 'lt IE 9',
-                      '!IE' => FALSE,
-                    ),
-                    'every_page' => TRUE,
-                    'preprocess' => TRUE,
-                    'scope' => 'footer',
-                    'weight' => 6,
-                  ),
-                ),
-              ),
-              // Without a variant callback, the variant is assumed to be
-              // installed.
-              'variant callback' => '_wetkit_wetboew_libraries_variant_exists',
-              'variant arguments' => array('unmin/js/wet-boew.js')
+              'file' => 'js/wet-boew.js',
+              'pattern' => '#\s+[Vv]?([0-9\.]+)#',
+              'lines' => 5,
             ),
             'minified' => array(
-              'files' => array(
-                'css' => array(
-                  'css/wet-boew.min.css' => array(
-                    'browsers' => array(
-                      'IE' => 'gte IE 9',
-                      '!IE' => TRUE,
-                    ),
-                    'group' => CSS_DEFAULT,
-                    'every_page' => TRUE,
-                    'preprocess' => TRUE,
-                    'weight' => -50,
-                  ),
-                  'css/theme.min.css' => array(
-                    'group' => CSS_DEFAULT,
-                    'every_page' => TRUE,
-                    'preprocess' => TRUE,
-                    'weight' => -50,
-                  ),
-                  'css/ie8-wet-boew.min.css' => array(
-                    'browsers' => array(
-                      'IE' => 'lt IE 9',
-                      '!IE' => FALSE,
-                    ),
-                    'group' => CSS_DEFAULT,
-                    'every_page' => TRUE,
-                    'preprocess' => FALSE,
-                    'weight' => -50,
-                  ),
-                ),
-                'js' => array(
-                  'js/wet-boew.min.js' => array(
-                    'browsers' => array(
-                      'IE' => 'gte IE 9',
-                      '!IE' => TRUE,
-                    ),
-                    'every_page' => TRUE,
-                    'preprocess' => FALSE,
-                    'scope' => 'footer',
-                    'weight' => 5,
-                  ),
-                  'js/ie8-wet-boew.min.js' => array(
-                    'browsers' => array(
-                      'IE' => 'lt IE 9',
-                      '!IE' => FALSE,
-                    ),
-                    'every_page' => TRUE,
-                    'preprocess' => FALSE,
-                    'scope' => 'header',
-                    'weight' => 6,
-                  ),
-                  'js/ie8-wet-boew2.min.js' => array(
-                    'browsers' => array(
-                      'IE' => 'lt IE 9',
-                      '!IE' => FALSE,
-                    ),
-                    'every_page' => TRUE,
-                    'preprocess' => TRUE,
-                    'scope' => 'footer',
-                    'weight' => 6,
-                  ),
-                ),
-              ),
-              // Without a variant callback, the variant is assumed to be
-              // installed.
-              'variant callback' => '_wetkit_wetboew_libraries_variant_exists',
-              'variant arguments' => array('js/wet-boew.min.js')
+              'file' => 'js/wet-boew.min.js',
+              'pattern' => '#\s+[Vv]?([0-9\.]+)#',
+              'lines' => 5,
             ),
           ),
         ),
-      ),
-    );
+        'versions' => array(
+          // Means ">=4.0.2": matches 4.0.2, 4.0.3, etc.
+          '4.0.2' => array(
+            'variants' => array(
+              'source' => array(
+                'files' => array(
+                  'js' => array(
+                    'js/wet-boew.js' => array(
+                      'browsers' => array(
+                        'IE' => 'gte IE 9',
+                        '!IE' => TRUE,
+                      ),
+                      'every_page' => TRUE,
+                      'preprocess' => FALSE,
+                      'scope' => 'footer',
+                      'weight' => 5,
+                    ),
+                    'js/ie8-wet-boew.js' => array(
+                      'browsers' => array(
+                        'IE' => 'lt IE 9',
+                        '!IE' => FALSE,
+                      ),
+                      'every_page' => TRUE,
+                      'preprocess' => FALSE,
+                      'scope' => 'header',
+                      'weight' => 6,
+                    ),
+                    'js/ie8-wet-boew2.js' => array(
+                      'browsers' => array(
+                        'IE' => 'lt IE 9',
+                        '!IE' => FALSE,
+                      ),
+                      'every_page' => TRUE,
+                      'preprocess' => TRUE,
+                      'scope' => 'footer',
+                      'weight' => 6,
+                    ),
+                  ),
+                ),
+                // Without a variant callback, the variant is assumed to be
+                // installed.
+                'variant callback' => '_wetkit_wetboew_libraries_variant_exists',
+                'variant arguments' => array('js/wet-boew.js')
+              ),
+              'minified' => array(
+                'files' => array(
+                  'js' => array(
+                    'js/wet-boew.min.js' => array(
+                      'browsers' => array(
+                        'IE' => 'gte IE 9',
+                        '!IE' => TRUE,
+                      ),
+                      'every_page' => TRUE,
+                      'preprocess' => FALSE,
+                      'scope' => 'footer',
+                      'weight' => 5,
+                    ),
+                    'js/ie8-wet-boew.min.js' => array(
+                      'browsers' => array(
+                        'IE' => 'lt IE 9',
+                        '!IE' => FALSE,
+                      ),
+                      'every_page' => TRUE,
+                      'preprocess' => FALSE,
+                      'scope' => 'header',
+                      'weight' => 6,
+                    ),
+                    'js/ie8-wet-boew2.min.js' => array(
+                      'browsers' => array(
+                        'IE' => 'lt IE 9',
+                        '!IE' => FALSE,
+                      ),
+                      'every_page' => TRUE,
+                      'preprocess' => TRUE,
+                      'scope' => 'footer',
+                      'weight' => 6,
+                    ),
+                  ),
+                ),
+                // Without a variant callback, the variant is assumed to be
+                // installed.
+                'variant callback' => '_wetkit_wetboew_libraries_variant_exists',
+                'variant arguments' => array('js/wet-boew.min.js')
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+    else {
+      $libraries[$wxt_library] = array(
+        'name' => 'Web Experience Toolkit Theme',
+        'vendor url' => 'https://github.com/wet-boew/wet-boew',
+        'download url' => 'https://github.com/wet-boew/wet-boew/downloads',
+        'version arguments' => array(
+          'variants' => array(
+            'source' => array(
+              'file' => 'css/wet-boew.css',
+              'pattern' => '#\s+[Vv]?([0-9\.]+)#',
+              'lines' => 6,
+            ),
+            'minified' => array(
+              'file' => 'css/wet-boew.min.css',
+              'pattern' => '#\s+[Vv]?([0-9\.]+)#',
+              'lines' => 6,
+            ),
+          ),
+        ),
+        'versions' => array(
+          // Means ">=4.0.2": matches 4.0.2, 4.0.3, etc.
+          '4.0.2' => array(
+            'variants' => array(
+              'source' => array(
+                'files' => array(
+                  'css' => array(
+                    'css/theme.css' => array(
+                      'browsers' => array(
+                        'IE' => 'gte IE 9',
+                        '!IE' => TRUE,
+                      ),
+                      'group' => CSS_DEFAULT,
+                      'every_page' => TRUE,
+                      'preprocess' => TRUE,
+                      'weight' => -50,
+                    ),
+                    'css/ie8-wet-boew.css' => array(
+                      'browsers' => array(
+                        'IE' => 'lt IE 9',
+                        '!IE' => FALSE,
+                      ),
+                      'group' => CSS_DEFAULT,
+                      'every_page' => TRUE,
+                      'preprocess' => FALSE,
+                      'weight' => -50,
+                    ),
+                  ),
+                  'js' => array(
+                    'js/theme.js' => array(
+                      'browsers' => array(
+                        'IE' => 'gte IE 9',
+                        '!IE' => TRUE,
+                      ),
+                      'every_page' => TRUE,
+                      'preprocess' => FALSE,
+                      'scope' => 'footer',
+                      'weight' => 5,
+                    ),
+                  ),
+                ),
+                // Without a variant callback, the variant is assumed to be
+                // installed.
+                'variant callback' => '_wetkit_wetboew_libraries_variant_exists',
+                'variant arguments' => array('css/wet-boew.css')
+              ),
+              'minified' => array(
+                'files' => array(
+                  'css' => array(
+                    'css/theme.min.css' => array(
+                      'browsers' => array(
+                        'IE' => 'gte IE 9',
+                        '!IE' => TRUE,
+                      ),
+                      'group' => CSS_DEFAULT,
+                      'every_page' => TRUE,
+                      'preprocess' => TRUE,
+                      'weight' => -50,
+                    ),
+                    'css/ie8-wet-boew.min.css' => array(
+                      'browsers' => array(
+                        'IE' => 'lt IE 9',
+                        '!IE' => FALSE,
+                      ),
+                      'group' => CSS_DEFAULT,
+                      'every_page' => TRUE,
+                      'preprocess' => FALSE,
+                      'weight' => -50,
+                    ),
+                  ),
+                  'js' => array(
+                    'js/theme.min.js' => array(
+                      'every_page' => TRUE,
+                      'preprocess' => FALSE,
+                      'scope' => 'footer',
+                      'weight' => 10,
+                    ),
+                  ),
+                ),
+                // Without a variant callback, the variant is assumed to be
+                // installed.
+                'variant callback' => '_wetkit_wetboew_libraries_variant_exists',
+                'variant arguments' => array('css/wet-boew.min.css')
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
+    // WxT specific theme markup.
+    if ($wxt_library == 'theme-wet-boew') {
+      foreach ($variant_order as $variant) {
+        unset($libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['js']);
+      }
+    }
 
     // Theme variants specific theme markup
-    if ($wxt_library != 'wet-boew') {
+    /*if ($wxt_library != 'theme-wet-boew' && $wxt_library != 'wet-boew') {
       // CSS aditions for GCWU-FEGC.
       foreach ($variant_order as $variant) {
-       $js = ($variant == 'source') ? 'unmin/js/theme.js' : 'js/theme.min.js';
+       $js = ($variant == 'source') ? 'js/theme.js' : 'js/theme.min.js';
        $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['js'][$js] = array(
           'group' => CSS_DEFAULT,
           'every_page' => TRUE,
@@ -233,13 +297,14 @@ function wetkit_wetboew_libraries_info() {
           'weight' => 7,
         );
       }
-    }
+    }*/
 
     // GCWEB specific theme markup.
-    if ($wxt_library == 'wet-boew-gcweb') {
+    if ($wxt_library == 'theme-gcweb') {
+
       // CSS aditions for GCWEB.
       foreach ($variant_order as $variant) {
-        $css = ($variant == 'source') ? 'unmin/css/messages.css' : 'css/messages.min.css';
+        $css = ($variant == 'source') ? 'css/messages.css' : 'css/messages.min.css';
         $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['css'][$css] = array(
           'group' => CSS_DEFAULT,
           'every_page' => TRUE,
@@ -247,7 +312,7 @@ function wetkit_wetboew_libraries_info() {
           'weight' => 5,
         );
 
-        $ie8_css = ($variant == 'source') ? 'unmin/css/messages-ie.min.css' : 'css/messages-ie.min.css';
+        $ie8_css = ($variant == 'source') ? 'css/messages-ie.min.css' : 'css/messages-ie.min.css';
         $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['css'][$ie8_css] = array(
           'browsers' => array(
             'IE' => 'lt IE 9',
@@ -289,7 +354,6 @@ function _wetkit_wetboew_libraries_variant_exists($library, $variant_name, $requ
  *   An associative array with the following keys:
  *   - variants: An array of options for libraries_get_version() keyed by
  *     variant name.
- *
  */
 function _wetkit_wetboew_libraries_get_version(&$library, $options = array()) {
   $versions = array();
@@ -366,7 +430,6 @@ function _wetkit_wetboew_libraries_get_preferred_variant_name($library) {
 function _wetkit_wetboew_libraries_filter_null_values($item) {
   return !empty($item);
 }
-
 
 /**
  * Converts a libraries module array to a hook_library array.
