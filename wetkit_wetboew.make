@@ -18,7 +18,7 @@ libraries[theme-gc-intranet][download][type] = get
 libraries[theme-gc-intranet][download][url] = https://github.com/wet-boew/themes-cdn/archive/v4.0.16-theme-gc-intranet.tar.gz
 
 libraries[theme-gcwu-fegc][download][type] = get
-libraries[theme-gcwu-fegc][download][url] = https://github.com/wet-boew/themes-cdn/archive/v4.0.16-theme-gcweu-fegc.tar.gz
+libraries[theme-gcwu-fegc][download][url] = https://github.com/wet-boew/themes-cdn/archive/v4.0.16-theme-gcwu-fegc.tar.gz
 
 libraries[theme-gcweb][download][type] = get
 libraries[theme-gcweb][download][url] = https://github.com/wet-boew/themes-cdn/archive/v4.0.16-gcweb.tar.gz
