@@ -204,7 +204,7 @@ function wetkit_wetboew_libraries_info() {
                       'preprocess' => TRUE,
                       'weight' => -50,
                     ),
-                    'css/ie8-wet-boew.css' => array(
+                    'css/ie8-theme.css' => array(
                       'browsers' => array(
                         'IE' => 'lt IE 9',
                         '!IE' => FALSE,
@@ -246,7 +246,7 @@ function wetkit_wetboew_libraries_info() {
                       'preprocess' => TRUE,
                       'weight' => -50,
                     ),
-                    'css/ie8-wet-boew.min.css' => array(
+                    'css/ie8-theme.min.css' => array(
                       'browsers' => array(
                         'IE' => 'lt IE 9',
                         '!IE' => FALSE,
@@ -280,29 +280,29 @@ function wetkit_wetboew_libraries_info() {
     // WxT specific theme markup.
     if ($wxt_library == 'theme-wet-boew') {
       foreach ($variant_order as $variant) {
+        // theme-wet-boew has js residing in wet-boew
         unset($libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['js']);
       }
     }
 
-    // Theme variants specific theme markup
-    /*if ($wxt_library != 'theme-wet-boew' && $wxt_library != 'wet-boew') {
-      // CSS aditions for GCWU-FEGC.
+    // GC Internet specific theme markup.
+    if ($wxt_library == 'theme-gcwu-fegc') {
       foreach ($variant_order as $variant) {
-       $js = ($variant == 'source') ? 'js/theme.js' : 'js/theme.min.js';
-       $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['js'][$js] = array(
-          'group' => CSS_DEFAULT,
-          'every_page' => TRUE,
-          'preprocess' => FALSE,
-          'scope' => 'footer',
-          'weight' => 7,
-        );
+        if (strpos(current_path(),'splash') !== false) {
+          unset($libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['css']['css/theme.min.css']);
+          $css = ($variant == 'source') ? 'css/theme-sp-pe.css' : 'css/theme-sp-pe.min.css';
+          $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['css'][$css] = array(
+            'group' => CSS_DEFAULT,
+            'every_page' => TRUE,
+            'preprocess' => TRUE,
+            'weight' => 5,
+          );
+        }
       }
-    }*/
+    }
 
     // GCWEB specific theme markup.
     if ($wxt_library == 'theme-gcweb') {
-
-      // CSS aditions for GCWEB.
       foreach ($variant_order as $variant) {
         $css = ($variant == 'source') ? 'css/messages.css' : 'css/messages.min.css';
         $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['css'][$css] = array(
@@ -311,7 +311,6 @@ function wetkit_wetboew_libraries_info() {
           'preprocess' => TRUE,
           'weight' => 5,
         );
-
         $ie8_css = ($variant == 'source') ? 'css/messages-ie.min.css' : 'css/messages-ie.min.css';
         $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['css'][$ie8_css] = array(
           'browsers' => array(
