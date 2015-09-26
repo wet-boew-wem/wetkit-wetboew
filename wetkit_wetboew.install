@@ -27,5 +27,5 @@ function wetkit_wetboew_update_7401() {
   if ($theme == 'wet-boew') {
     $theme = 'theme-wet-boew';
   }
-  variable_get('wetkit_wetboew_theme', $theme);
+  variable_set('wetkit_wetboew_theme', $theme);
 }
