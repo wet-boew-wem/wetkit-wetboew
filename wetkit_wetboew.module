@@ -76,7 +76,7 @@ function wetkit_wetboew_page_build() {
   $wxt_active = variable_get('wetkit_wetboew_theme', 'theme-wet-boew');
   $element = array(
     '#type' => 'markup',
-    '#markup' => '<link rel="stylesheet" href="' . $base_url . libraries_get_path($wxt_active, TRUE) . '/css/noscript.min.css" />',
+    '#markup' => '<link rel="stylesheet" href="' . $base_url . libraries_get_path('wet-boew', TRUE) . '/css/noscript.min.css" />',
     '#prefix' => "<noscript>",
     '#suffix' => "</noscript>\n",
     '#weight' => '999',
