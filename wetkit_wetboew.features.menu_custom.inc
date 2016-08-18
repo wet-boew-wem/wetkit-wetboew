@@ -63,6 +63,5 @@ function wetkit_wetboew_menu_default_menu_custom() {
   t('Terms Menu.');
   t('The <em>Main</em> megamenu.');
 
-
   return $menus;
 }
