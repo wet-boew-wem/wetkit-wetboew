@@ -21,7 +21,7 @@ libraries[theme-gcwu-fegc][download][type] = get
 libraries[theme-gcwu-fegc][download][url] = https://github.com/wet-boew/themes-cdn/archive/v4.0.27-theme-gcwu-fegc.tar.gz
 
 libraries[theme-gcweb][download][type] = get
-libraries[theme-gcweb][download][url] = https://github.com/wet-boew/themes-cdn/archive/v4.0.28.1-gcweb.tar.gz
+libraries[theme-gcweb][download][url] = https://github.com/wet-boew/themes-cdn/archive/v4.0.29-gcweb.tar.gz
 
 libraries[theme-ogpl][download][type] = get
 libraries[theme-ogpl][download][url] = https://github.com/wet-boew/themes-cdn/archive/v4.0.27-theme-ogpl.tar.gz
