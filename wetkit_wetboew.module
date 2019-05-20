@@ -57,7 +57,12 @@ function wetkit_wetboew_page_build() {
     // Canada Theme.
     elseif ($wxt_active == 'theme-gcweb') {
       drupal_add_library('wetkit_wetboew', $wxt_active);
-      $themekey = 'theme-ogpl';
+      $themekey = 'theme-gcweb';
+    }
+    // Canada Theme.
+    elseif ($wxt_active == 'theme-gcweb-v5') {
+      drupal_add_library('wetkit_wetboew', $wxt_active);
+      $themekey = 'theme-gcweb';
     }
     // WET Theme.
     else {
@@ -243,6 +248,7 @@ function _wetkit_wetboew_options() {
     'theme-base' => t('Base'),
     'theme-ogpl' => t('OGPL'),
     'theme-gcweb' => t('Canada'),
+    'theme-gcweb-v5' => t('Canada v5'),
   );
 }
 

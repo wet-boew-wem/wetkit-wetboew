@@ -19,6 +19,7 @@ function wetkit_wetboew_library() {
     'theme-base' => 'WxT Base Theme',
     'theme-gc-intranet' => 'WxT Intranet Theme for Government of Canada',
     'theme-gcweb' => 'WxT Canada Theme for Government of Canada',
+    'theme-gcweb-v5' => 'WxT Canada Theme (v5) for Government of Canada',
     'theme-gcwu-fegc' => 'WxT Internet Theme for Government of Canada',
     'theme-ogpl' => 'WxT Open Government Platform Theme',
   );
@@ -54,6 +55,7 @@ function wetkit_wetboew_libraries_info() {
     'theme-base' => 'WxT Base Theme',
     'theme-gc-intranet' => 'WxT Intranet Theme for Government of Canada',
     'theme-gcweb' => 'WxT Canada Theme for Government of Canada',
+    'theme-gcweb-v5' => 'WxT Canada Theme (v5) for Government of Canada',
     'theme-gcwu-fegc' => 'WxT Internet Theme for Government of Canada',
     'theme-ogpl' => 'WxT Open Government Platform Theme',
   );
@@ -302,7 +304,7 @@ function wetkit_wetboew_libraries_info() {
     }
 
     // GCWEB specific theme markup.
-    if ($wxt_library == 'theme-gcweb') {
+    if ($wxt_library == 'theme-gcweb' || $wxt_library == 'theme-gcweb-v5') {
       foreach ($variant_order as $variant) {
         $css = ($variant == 'source') ? 'css/messages.css' : 'css/messages.min.css';
         $libraries[$wxt_library]['versions']['4.0.2']['variants'][$variant]['files']['css'][$css] = array(
